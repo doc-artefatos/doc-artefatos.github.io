@@ -174,25 +174,79 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="intruções-para-revisão"><a class="header" href="#intruções-para-revisão">Intruções para revisão</a></h1>
-<p>Seu objetivo como um revisor de artefato consiste em garantir que a qualidade do artefato corresponda com o conteúdo do artigo e os requisitos mínimos esperados para a obtenção de cada selo. Para realizar esta atividade com excelência, antes de avaliar os artefatos <strong>(i)</strong> leia o artigo; e <strong>(ii)</strong> defina as principais contribuições do trabalho. Estas duas etapas tornam o processo de avaliação de cada selo mais simples.</p>
+<p>Seu objetivo como um revisor de artefato consiste em garantir que a qualidade do artefato corresponda com o conteúdo do artigo e os requisitos mínimos esperados para a obtenção de cada selo. 
+Para realizar esta atividade com excelência, antes de avaliar os artefatos <strong>(i)</strong> leia o artigo; e <strong>(ii)</strong> defina as principais contribuições do trabalho. Estas duas etapas tornam o processo de avaliação de cada selo mais simples.</p>
 <blockquote>
 <p><strong>Note</strong>
 Observe que o período de revisão é relativamente curto. Recomendamos iniciar suas revisões assim que receber sua tarefa.</p>
 </blockquote>
 <h2 id="passos-para-a-avaliação-de-um-artefato"><a class="header" href="#passos-para-a-avaliação-de-um-artefato">Passos para a avaliação de um artefato</a></h2>
 <p>O processo de revisão pode ser realizado em um ambiente de sua preferência, desde que bata os requisitos mínimos do ambiente de execução esperado para o artefato. Recomendamos a execução dos artefatos (quando aplicável) em um ambiente virtual por trazer praticidade para os revisores e garantir que componentes presentes na sua máquina local não prejudiquem o processo de avaliação (um clean install em um ambiente novo pode reduzir imprevistos).</p>
-<p>Caso recursos adicionais sejam necessários (infraestrutura de nuvem, chaves SSH, etc.) estas informações devem estar presentes no apêndice do artefato.</p>
+<p>Caso recursos adicionais sejam necessários (infraestrutura de nuvem, chaves SSH, etc.) estas informações devem estar presentes no Apêndice do artefato.</p>
 <p>Os artefatos em avaliação já são artigos aceitos pelo comitê técnico do SBRC'25. Desta forma, não há necessidade de avaliar sua solidez científica. No entanto, caso você encontre algum problema, relate entrando em contato com os coordenadores de avaliação de artefatos.</p>
 <blockquote>
 <p><strong>Note</strong>
 Lembre-se de que todos os artefatos, análises e discussões são confidenciais</p>
 </blockquote>
 <h2 id="processo-de-revisão"><a class="header" href="#processo-de-revisão">Processo de Revisão</a></h2>
-<p>O processo de revisão está dividido em duas etapas. <strong>Primeiramente</strong>, você como revisor deve selecionar os trabalhos que possuem afeição/familiaridade com o assunto para o posterior processo de revisão. Faça a escolha de trabalhos o quanto antes para que o comitê tenha conhecimento das revisões de cada membro. Os trabalhos estão presentes em uma planilha online, cada membro do CTA e do CTAA irá escolher 3 ou mais trabalhos para avaliar.</p>
-<p>Após  ter selecionado seus trabalhos, você já pode começar a realizar as revisões. Para orientar esta <strong>segunda etapa</strong>, um conjunto de instruções com pontos chaves do processo de avaliação de artefato foi definido pelo comitê. As instruções definindo os requisitos para a obtenção de cada selo.</p>
+<p>O processo de revisão está dividido em duas etapas. <strong>Primeiramente</strong>, você como revisor deve selecionar os trabalhos que possuem afeição/familiaridade com o assunto para o posterior processo de revisão. Faça a escolha de trabalhos o quanto antes para que o comitê tenha conhecimento das revisões de cada membro. Cada membro do CTA irá escolher 3 ou mais trabalhos para avaliar (número a ser confirmado pelos coordenadores posteriormente).</p>
+<p>Após ter selecionado seus trabalhos, você já pode começar a realizar as revisões. Para orientar esta <strong>segunda etapa</strong>, um conjunto de instruções com pontos chaves do processo de avaliação de artefato foi definido pelo comitê, conforme consta nas definições de requisitos para a obtenção de cada selo.
+Para que o artefato esteja apto a receber um selo, os respectivos requisitos devem ser satisfeitos.</p>
 <p>Para que o trabalho/artefato seja apto a receber o selo, os respectivos requisitos devem ser alcançados:</p>
 <h3 id="artefatos-disponíveis-selod"><a class="header" href="#artefatos-disponíveis-selod">Artefatos Disponíveis (SeloD)</a></h3>
-<p>É esperado que o código e/ou dados estejam <strong>disponíveis em um repositório estável</strong> (como GitHub e GitLab). Neste repositório é esperado encontrar um <a href="https://github.com/matiassingers/awesome-readme">README.md</a> com uma <strong>documentação mínima</strong> descrevendo o objetivo do artefato, com o respectivo <strong>título</strong> e <strong>resumo</strong> do artigo.</p>
+<p>É esperado que o código e/ou dados estejam <strong>disponíveis em um repositório estável</strong> (como GitHub e GitLab). Neste repositório é esperado encontrar um <a href="https://github.com/matiassingers/awesome-readme">README.md</a> com os <strong>requisitos mínimos do README.md</strong>. Os requisitos mínimos do README.md sendo:</p>
+<pre><code># Título projeto
+
+Resumo descrevendo o objetivo do artefato, com o respectivo título e resumo do artigo.
+
+# Estrutura do readme.md
+
+Apresenta a estrutura do readme.md, descrevendo como o repositório está organizado.
+
+# Selos Considerados
+
+Os autores devem descrever quais selos devem ser considerados no processo de avaliação. Como por exemplo: ``Os selos considerados são: Disponíveis e Funcionais.''
+
+# Informações básicas
+
+Esta seção deve apresentar informações básicas de todos os componentes necessários para a execução e replicação dos experimentos. 
+Descrevendo todo o ambiente de execução, com requisitos de hardware e software.
+
+# Dependências
+
+Informações relacionadas a benchmarks utilizados e dependências para a execução devem ser descritas nesta seção. 
+Busque deixar o mais claro possível, apresentando informações como versões de dependências e processos para acessar recursos de terceiros caso necessário.
+
+# Preocupações com segurança
+
+Caso a execução do artefato ofereça algum tipo de risco para os avaliadores. Este risco deve ser descrito e o processo adequado para garantir a segurança dos revisores deve ser apresentado.
+
+# Instalação
+
+O processo de baixar e instalar a aplicação deve ser descrito nesta seção. Ao final deste processo já é esperado que a aplicação/benchmark/ferramenta consiga ser executada.
+
+# Teste mínimo
+
+Esta seção deve apresentar um passo a passo para a execução de um teste mínimo.
+Um teste mínimo de execução permite que os revisores consigam observar algumas funcionalidades do artefato. 
+Este teste é útil para a identificação de problemas durante o processo de instalação.
+
+# Experimentos
+
+Esta seção deve descrever um passo a passo para a execução e obtenção dos resultados do artigo. Permitindo que os revisores consigam alcançar as reivindicações apresentadas no artigo. 
+Cada reivindicações deve ser apresentada em uma subseção, com detalhes de arquivos de configurações a serem alterados, comandos a serem executados, flags a serem utilizadas, tempo esperado de execução, expectativa de recursos a serem utilizados como 1GB RAM/Disk e resultado esperado. 
+
+Caso o processo para a reprodução de todos os experimento não seja possível em tempo viável. Os autores devem escolher as principais reivindicações apresentadas no artigo e apresentar o respectivo processo para reprodução.
+
+## Reivindicações #X
+
+## Reivindicações #Y
+
+# LICENSE
+
+Apresente a licença.
+
+</code></pre>
 <h3 id="artefatos-funcionais-selof"><a class="header" href="#artefatos-funcionais-selof">Artefatos Funcionais (SeloF)</a></h3>
 <p>É esperado que o código e/ou artefato possa ser <strong>executado</strong> e o revisor consiga observar algumas de suas <strong>funcionalidades</strong>. Para adquirir este artefato, é importante que informações adicionais estejam presentes no README.md do repositório, como</p>
 <ol>
@@ -214,34 +268,10 @@ Lembre-se de que todos os artefatos, análises e discussões são confidenciais<
 <ol>
 <li>instrução para executar as principais reivindicações (e.g., resultados dos principais gráficos/tabelas);</li>
 <li>descrição de um processo de como foram executados os experimentos para chegar até o resultado do artigo;</li>
-<li>descrição de detalhes técnicos específicos do ambiente (quando aplicável). Por exemplo, incluir detalhes da infraestrutura utilizada na Amazon Cloud ou Google Cloud. Eventualmente, incluir até chaves de acesso para permitir a reprodução do experimento.</li>
 </ol>
 <h2 id="entrega-das-revisões"><a class="header" href="#entrega-das-revisões">Entrega das Revisões</a></h2>
 <p>Para cada artefato, você deve produzir uma breve revisão justificando a razão por atribuir ou negar um selo ao artefato. Esta avaliação só deve ser completada após o processo de avaliação tenha sido realizado.</p>
-<p>Para facilitar o processo de avaliação, complete os comentários para cada selo seguindo o seguinte modelo que levam em consideração os critérios necessários para receber cada selo.</p>
-<p>Exemplos:</p>
-<pre><code>(caso 1, selo atribuido) SeloD: Artefato publicamente Disponível (comentários)
-+ disponíveis em um repositório estável
-+ documentação mínima
-+ título
-+ resumo
-Recomendo a atribuição do selo.
-</code></pre>
-<pre><code>(caso 2, selo não atribuido) SeloD: Artefato publicamente Disponível (comentários)
-+ disponíveis em um repositório estável
-- documentação mínima
-+ título
-- resumo
-Não posso recomendar a atribuição do selo, por não  possuir uma documentação mínima e resumo do artigo.
-</code></pre>
-<pre><code>(caso 3, CASO O SELO NÃO TENHA SIDO SOLICITADO) SeloD: Artefato publicamente Disponível (comentários)
-O selo não foi solicitado para esta categoria.
-</code></pre>
-<p>Utilize dos sinais (-) e (+) para demonstrar qual dos critérios o artefato não esteja alcançando (caso utilize o sinal de -) ou esteja alcançando (caso utilize o sinal de +). Também é importante ressaltar a conclusão da revisão, explanando as motivações quando o artefato não alcança os critérios mínimos esperados para cada selo.</p>
-<blockquote>
-<p><strong>Note</strong>
-Imagine que a seção de comentário deve ser tratada como se fosse uma seção de comentários para os autores em um processo de revisão onde o feedback seria apresentado para os autores em uma fase posterior.</p>
-</blockquote>
+<p>Para facilitar o processo de avaliação, um exemplos está disponível junto ao formulário de submissão.</p>
 
                     </main>
 

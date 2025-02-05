@@ -174,14 +174,83 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="instruções-de-submissão"><a class="header" href="#instruções-de-submissão">Instruções de submissão</a></h1>
-<p>Quatro selos de qualidade podem ser considerados para um artefato. Junto com a submissão do camera ready do artigo, os autores podem opcionalmente optar por submeter o artefato do artigo.
-Para que os artefatos sejam julgados, é <strong>obrigatório a submissão de um apêndice</strong> descrevendo quais selos devem ser considerados na avaliação do(s) artefato(s) do trabalho e fornecendo as instruções necessárias para os revisores.</p>
-<h2 id="requisitos"><a class="header" href="#requisitos">Requisitos</a></h2>
+<p>Quatro selos de qualidade podem ser considerados para um artefato. 
+Junto com a submissão do camera ready do artigo, os autores <strong>devem obrigatoriamente</strong> submeter o artefato do artigo.
+Para que os artefatos sejam julgados, é <strong>obrigatório que o README.md submetido contenha os requisitos mínimos exigidos</strong>.</p>
+<h2 id="requisitos-mínimo-readmemd-obrigatório"><a class="header" href="#requisitos-mínimo-readmemd-obrigatório">Requisitos mínimo README.md (Obrigatório)</a></h2>
+<p>Para facilitar o processo de avaliação dos artefatos, foi criado um modelo de README.md (Obrigatório) com todos os campos mínimos esperados para um artefato. </p>
+<pre><code># Título projeto
+
+Resumo descrevendo o objetivo do artefato, com o respectivo título e resumo do artigo.
+
+# Estrutura do readme.md
+
+Apresenta a estrutura do readme.md, descrevendo como o repositório está organizado.
+
+# Selos Considerados
+
+Os autores devem descrever quais selos devem ser considerados no processo de avaliação. Como por exemplo: ``Os selos considerados são: Disponíveis e Funcionais.''
+
+# Informações básicas
+
+Esta seção deve apresentar informações básicas de todos os componentes necessários para a execução e replicação dos experimentos. 
+Descrevendo todo o ambiente de execução, com requisitos de hardware e software.
+
+# Dependências
+
+Informações relacionadas a benchmarks utilizados e dependências para a execução devem ser descritas nesta seção. 
+Busque deixar o mais claro possível, apresentando informações como versões de dependências e processos para acessar recursos de terceiros caso necessário.
+
+# Preocupações com segurança
+
+Caso a execução do artefato ofereça algum tipo de risco para os avaliadores. Este risco deve ser descrito e o processo adequado para garantir a segurança dos revisores deve ser apresentado.
+
+# Instalação
+
+O processo de baixar e instalar a aplicação deve ser descrito nesta seção. Ao final deste processo já é esperado que a aplicação/benchmark/ferramenta consiga ser executada.
+
+# Teste mínimo
+
+Esta seção deve apresentar um passo a passo para a execução de um teste mínimo.
+Um teste mínimo de execução permite que os revisores consigam observar algumas funcionalidades do artefato. 
+Este teste é útil para a identificação de problemas durante o processo de instalação.
+
+# Experimentos
+
+Esta seção deve descrever um passo a passo para a execução e obtenção dos resultados do artigo. Permitindo que os revisores consigam alcançar as reivindicações apresentadas no artigo. 
+Cada reivindicações deve ser apresentada em uma subseção, com detalhes de arquivos de configurações a serem alterados, comandos a serem executados, flags a serem utilizadas, tempo esperado de execução, expectativa de recursos a serem utilizados como 1GB RAM/Disk e resultado esperado. 
+
+Caso o processo para a reprodução de todos os experimento não seja possível em tempo viável. Os autores devem escolher as principais reivindicações apresentadas no artigo e apresentar o respectivo processo para reprodução.
+
+## Reivindicações #X
+
+## Reivindicações #Y
+
+# LICENSE
+
+Apresente a licença.
+
+</code></pre>
+<p>É obrigatório que <strong>TODAS</strong> as Seções apresentadas no requisito mínimo README.md estejam presentes. 
+Se você tiver qualquer dúvida, por favor, entre em contato conosco.</p>
+<blockquote>
+<p><strong>Note</strong>
+Antes de submeter o seu artefato, é interessante que os autores realizem a instalação e execução do seu artefato em um ambiente novo (máquina virtual) seguindo somente as instruções presente no README.md.</p>
+</blockquote>
+<h3 id="recursos-específicos-ou-restrições"><a class="header" href="#recursos-específicos-ou-restrições">Recursos específicos ou restrições</a></h3>
+<p>Caso <strong>recursos adicionais</strong> sejam necessários (infraestrutura de nuvem, chaves SSH, etc.) para a avaliação do artefato, estas informações devem ser submetidas através de um apêndice.
+Neste os autores incluem informações adicionais (privadas, como chaves SSH para acessar o Google Cloud) para auxiliar os revisores do Comitê Técnico de Artefatos. 
+O modelo LaTeX de apêndice está disponível em <a href="https://www.overleaf.com/read/jscjwsnqsxfh">Exemplo-Apendice</a>.
+Todos os campos devem ser apresentados no apêndice, além dos requisitos mínimos para o README.md que são obrigatórios.</p>
+<p>O apêndice é um critério <strong>adicional</strong> no momento que recursos específicos acabam sendo necessários para a avaliação do artefato ou restrições de acesso existam.</p>
+<h2 id="requisitos-por-selo"><a class="header" href="#requisitos-por-selo">Requisitos por selo</a></h2>
 <p>Para que o trabalho/artefato seja apto a receber o selo, os respectivos requisitos devem ser alcançados:</p>
 <h3 id="artefatos-disponíveis-selod"><a class="header" href="#artefatos-disponíveis-selod">Artefatos Disponíveis (SeloD)</a></h3>
-<p>É esperado que o código e/ou dados estejam <strong>disponíveis em um repositório estável</strong> (como GitHub e GitLab). Neste repositório é esperado encontrar um <a href="https://github.com/matiassingers/awesome-readme">README.md</a> com uma <strong>documentação mínima</strong> descrevendo o objetivo do artefato, com o respectivo <strong>título</strong> e <strong>resumo</strong> do artigo.</p>
+<p>É esperado que o código e/ou dados estejam <strong>disponíveis em um repositório estável</strong> (como GitHub e GitLab). 
+Neste repositório é esperado encontrar um <a href="https://github.com/matiassingers/awesome-readme">README.md</a> com os <strong>requisitos mínimos</strong>. O arquivo README.md do repositório pode ser o mesmo arquivo submetido para apreciação do CTA.</p>
 <h3 id="artefatos-funcionais-selof"><a class="header" href="#artefatos-funcionais-selof">Artefatos Funcionais (SeloF)</a></h3>
-<p>É esperado que o código e/ou artefato possa ser <strong>executado</strong> e o revisor consiga observar algumas de suas <strong>funcionalidades</strong>. Para adquirir este artefato, é importante que informações adicionais estejam presentes no README.md do repositório, como</p>
+<p>É esperado que o código e/ou artefato possa ser <strong>executado</strong> e o revisor consiga observar algumas de suas <strong>funcionalidades</strong>. 
+Para adquirir este artefato, é importante que informações adicionais estejam presentes no README.md do repositório, como</p>
 <ol>
 <li>lista de dependências;</li>
 <li>lista de versões das dependências/linguagens/ambiente;</li>
@@ -200,18 +269,9 @@ Para que os artefatos sejam julgados, é <strong>obrigatório a submissão de um
 <p>É esperado que o <strong>revisor consiga reproduzir as principais reivindicações apresentadas no artigo</strong>. Para obter este selo é esperado:</p>
 <ol>
 <li>instrução para executar as principais reivindicações (e.g., resultados dos principais gráficos/tabelas);</li>
-<li>descrição de um processo de como foram executados os experimentos para chegar até o resultado do artigo;</li>
-<li>descrição de detalhes técnicos específicos do ambiente (quando aplicável). Por exemplo, incluir detalhes da infraestrutura utilizada na Amazon Cloud ou Google Cloud. Eventualmente, incluir até chaves de acesso para permitir a reprodução do experimento.</li>
+<li>descrição de um processo de como foram executados os experimentos para chegar até o resultado do artigo.
+Para atender esses requisitos sugere-se a inclusão de script(s) que automatizem ao máximo todo o processo de reprodução.</li>
 </ol>
-<h2 id="apêndice-obrigatório"><a class="header" href="#apêndice-obrigatório">Apêndice (Obrigatório)</a></h2>
-<p>Para facilitar o processo de avaliação dos artefatos, foi criado um modelo de apêndice (Obrigatório) onde os autores descrevem quais selos devem ser considerados no processo de avaliação do artefato e incluem informações para auxiliar os revisores do Comitê Técnico de Artefatos. O modelo LaTeX de apêndice está disponível em <a href="https://www.overleaf.com/read/jscjwsnqsxfh">Exemplo-Apendice</a>.</p>
-<p>É obrigatório que as Seções de 1 a 4 estejam presentes. Se você tiver qualquer dúvida, por favor, entre em contato conosco.</p>
-<blockquote>
-<p><strong>Note</strong>
-Antes de submeter o seu artefato e apêndice, é interessante que os autores realizem a instalação e execução do seu artefato em um ambiente novo (máquina virtual) seguindo somente as instruções presente no apêndice.</p>
-</blockquote>
-<h2 id="exemplos-artefatos-sbseg23"><a class="header" href="#exemplos-artefatos-sbseg23">Exemplos Artefatos SBSeg'23</a></h2>
-<p>Um exemplo do <a href="./data/235027-5.pdf">Apêndice</a>. Resultado após o processo de avaliação do comitê <a href="./data/235027-2-selos-de-artefatos.pdf">Artigo</a>.</p>
 
                     </main>
 

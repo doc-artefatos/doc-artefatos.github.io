@@ -175,12 +175,15 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="avaliação-de-artefato-do-sf25"><a class="header" href="#avaliação-de-artefato-do-sf25">Avaliação de Artefato do SF'25</a></h1>
-<p>Pelo segundo ano o SBRC irá permitir que autores submetam artefatos estes sendo um software, dados, documentação, resultados brutos, provas, modelos, benchmarks, etc.
-Todas as trilhas do evento passam a promover que autores submetam artefatos para os seus artigos.</p>
-<p>Este recurso é essencial já que um artigo científico vai além do documento em si.
-Sendo que a qualidade deste artefato tende a ser tão importante como o próprio artigo científico.
-Já que conferências no Brasil não oferecem meios formais para submeter e avaliar nada além do próprio artigo. Este ano o SF realizará um processo OPCIONAL para a avaliação dos trabalhos onde os autores desejam submeter seus artefatos.</p>
-<p>Este processo de avaliação de artefatos vai levar como base o processo de avaliação realizado por conferências como USENIX, CoNEXT, SIGCOMM e EuroSys. Para os autores que desejam submeter um artefato, é interessante a leitura dos selos disponíveis, como as instruções do que é esperado de um artefato.</p>
+<p>Em 2025, o Salão de Ferramentas (SF) contará com um Comitê Técnico de Artefatos (CTA) para avaliar os artefatos dos artigos aceitos. Tais artefatos incluem software, dados, documentação complementar, resultados brutos, provas de conceito, modelos, avaliações detalhadas, benchmarks, etc. O artefato é um recurso essencial para os trabalhos de pesquisa e a qualidade dele é tão importante quanto a do próprio artigo científico.</p>
+<p>O artefato será avaliado por um comitê específico, que poderá atribuir até quatro selos: </p>
+<ul>
+<li>Artefatos Disponíveis (SeloD), </li>
+<li>Artefatos Funcionais (SeloF), </li>
+<li>Artefatos Sustentáveis (SeloS), e </li>
+<li>Experimentos Reprodutíveis (SeloR).</li>
+</ul>
+<p>O processo de avaliação de artefatos terá como base o processo de avaliação realizado por conferências renomadas como SIGCOMM, USENIX, CoNEXT e EuroSys. É fundamental que os autores leiam as descrições dos selos disponíveis para artefatos, bem como a descrição do que é esperado de um artefato.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="chamada-para-artefatos"><a class="header" href="#chamada-para-artefatos">Chamada para Artefatos</a></h1>
 <p>Autores com artigos aceitos no Salão de Ferramentas do SBRC'25 são incentivados a enviar artefatos para serem avaliados pelo comitê técnico de artefatos (CTA).
 Um artefatos pode ser um software, dados, documentação, resultados brutos, provas, modelos, benchmarks, etc.</p>
@@ -191,16 +194,86 @@ Um artefatos pode ser um software, dados, documentação, resultados brutos, pro
 <li>Artefatos Sustentáveis (SeloS); e</li>
 <li>Experimentos Reprodutíveis (SeloR).</li>
 </ol>
-<p>Antes de enviar seu artefato, verifique os <a href="./subinstrucoes.html">requisitos para a aquisição de cada selo</a>. Caso você tenha alguma dúvida ou preocupação, você pode entrar em <a href="./contato.html">contato</a>.</p>
+<p>Antes de enviar seu artefato, verifique os <a href="./subinstrucoes.html">requisitos para a aquisição de cada selo</a>. 
+Caso você tenha alguma dúvida ou preocupação, você pode entrar em <a href="./contato.html">contato</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="instruções-de-submissão"><a class="header" href="#instruções-de-submissão">Instruções de submissão</a></h1>
-<p>Quatro selos de qualidade podem ser considerados para um artefato. Junto com a submissão do camera ready do artigo, os autores podem opcionalmente optar por submeter o artefato do artigo.
-Para que os artefatos sejam julgados, é <strong>obrigatório a submissão de um apêndice</strong> descrevendo quais selos devem ser considerados na avaliação do(s) artefato(s) do trabalho e fornecendo as instruções necessárias para os revisores.</p>
-<h2 id="requisitos"><a class="header" href="#requisitos">Requisitos</a></h2>
+<p>Quatro selos de qualidade podem ser considerados para um artefato. 
+Junto com a submissão do camera ready do artigo, os autores <strong>devem obrigatoriamente</strong> submeter o artefato do artigo.
+Para que os artefatos sejam julgados, é <strong>obrigatório que o README.md submetido contenha os requisitos mínimos exigidos</strong>.</p>
+<h2 id="requisitos-mínimo-readmemd-obrigatório"><a class="header" href="#requisitos-mínimo-readmemd-obrigatório">Requisitos mínimo README.md (Obrigatório)</a></h2>
+<p>Para facilitar o processo de avaliação dos artefatos, foi criado um modelo de README.md (Obrigatório) com todos os campos mínimos esperados para um artefato. </p>
+<pre><code># Título projeto
+
+Resumo descrevendo o objetivo do artefato, com o respectivo título e resumo do artigo.
+
+# Estrutura do readme.md
+
+Apresenta a estrutura do readme.md, descrevendo como o repositório está organizado.
+
+# Selos Considerados
+
+Os autores devem descrever quais selos devem ser considerados no processo de avaliação. Como por exemplo: ``Os selos considerados são: Disponíveis e Funcionais.''
+
+# Informações básicas
+
+Esta seção deve apresentar informações básicas de todos os componentes necessários para a execução e replicação dos experimentos. 
+Descrevendo todo o ambiente de execução, com requisitos de hardware e software.
+
+# Dependências
+
+Informações relacionadas a benchmarks utilizados e dependências para a execução devem ser descritas nesta seção. 
+Busque deixar o mais claro possível, apresentando informações como versões de dependências e processos para acessar recursos de terceiros caso necessário.
+
+# Preocupações com segurança
+
+Caso a execução do artefato ofereça algum tipo de risco para os avaliadores. Este risco deve ser descrito e o processo adequado para garantir a segurança dos revisores deve ser apresentado.
+
+# Instalação
+
+O processo de baixar e instalar a aplicação deve ser descrito nesta seção. Ao final deste processo já é esperado que a aplicação/benchmark/ferramenta consiga ser executada.
+
+# Teste mínimo
+
+Esta seção deve apresentar um passo a passo para a execução de um teste mínimo.
+Um teste mínimo de execução permite que os revisores consigam observar algumas funcionalidades do artefato. 
+Este teste é útil para a identificação de problemas durante o processo de instalação.
+
+# Experimentos
+
+Esta seção deve descrever um passo a passo para a execução e obtenção dos resultados do artigo. Permitindo que os revisores consigam alcançar as reivindicações apresentadas no artigo. 
+Cada reivindicações deve ser apresentada em uma subseção, com detalhes de arquivos de configurações a serem alterados, comandos a serem executados, flags a serem utilizadas, tempo esperado de execução, expectativa de recursos a serem utilizados como 1GB RAM/Disk e resultado esperado. 
+
+Caso o processo para a reprodução de todos os experimento não seja possível em tempo viável. Os autores devem escolher as principais reivindicações apresentadas no artigo e apresentar o respectivo processo para reprodução.
+
+## Reivindicações #X
+
+## Reivindicações #Y
+
+# LICENSE
+
+Apresente a licença.
+
+</code></pre>
+<p>É obrigatório que <strong>TODAS</strong> as Seções apresentadas no requisito mínimo README.md estejam presentes. 
+Se você tiver qualquer dúvida, por favor, entre em contato conosco.</p>
+<blockquote>
+<p><strong>Note</strong>
+Antes de submeter o seu artefato, é interessante que os autores realizem a instalação e execução do seu artefato em um ambiente novo (máquina virtual) seguindo somente as instruções presente no README.md.</p>
+</blockquote>
+<h3 id="recursos-específicos-ou-restrições"><a class="header" href="#recursos-específicos-ou-restrições">Recursos específicos ou restrições</a></h3>
+<p>Caso <strong>recursos adicionais</strong> sejam necessários (infraestrutura de nuvem, chaves SSH, etc.) para a avaliação do artefato, estas informações devem ser submetidas através de um apêndice.
+Neste os autores incluem informações adicionais (privadas, como chaves SSH para acessar o Google Cloud) para auxiliar os revisores do Comitê Técnico de Artefatos. 
+O modelo LaTeX de apêndice está disponível em <a href="https://www.overleaf.com/read/jscjwsnqsxfh">Exemplo-Apendice</a>.
+Todos os campos devem ser apresentados no apêndice, além dos requisitos mínimos para o README.md que são obrigatórios.</p>
+<p>O apêndice é um critério <strong>adicional</strong> no momento que recursos específicos acabam sendo necessários para a avaliação do artefato ou restrições de acesso existam.</p>
+<h2 id="requisitos-por-selo"><a class="header" href="#requisitos-por-selo">Requisitos por selo</a></h2>
 <p>Para que o trabalho/artefato seja apto a receber o selo, os respectivos requisitos devem ser alcançados:</p>
 <h3 id="artefatos-disponíveis-selod"><a class="header" href="#artefatos-disponíveis-selod">Artefatos Disponíveis (SeloD)</a></h3>
-<p>É esperado que o código e/ou dados estejam <strong>disponíveis em um repositório estável</strong> (como GitHub e GitLab). Neste repositório é esperado encontrar um <a href="https://github.com/matiassingers/awesome-readme">README.md</a> com uma <strong>documentação mínima</strong> descrevendo o objetivo do artefato, com o respectivo <strong>título</strong> e <strong>resumo</strong> do artigo.</p>
+<p>É esperado que o código e/ou dados estejam <strong>disponíveis em um repositório estável</strong> (como GitHub e GitLab). 
+Neste repositório é esperado encontrar um <a href="https://github.com/matiassingers/awesome-readme">README.md</a> com os <strong>requisitos mínimos</strong>. O arquivo README.md do repositório pode ser o mesmo arquivo submetido para apreciação do CTA.</p>
 <h3 id="artefatos-funcionais-selof"><a class="header" href="#artefatos-funcionais-selof">Artefatos Funcionais (SeloF)</a></h3>
-<p>É esperado que o código e/ou artefato possa ser <strong>executado</strong> e o revisor consiga observar algumas de suas <strong>funcionalidades</strong>. Para adquirir este artefato, é importante que informações adicionais estejam presentes no README.md do repositório, como</p>
+<p>É esperado que o código e/ou artefato possa ser <strong>executado</strong> e o revisor consiga observar algumas de suas <strong>funcionalidades</strong>. 
+Para adquirir este artefato, é importante que informações adicionais estejam presentes no README.md do repositório, como</p>
 <ol>
 <li>lista de dependências;</li>
 <li>lista de versões das dependências/linguagens/ambiente;</li>
@@ -219,38 +292,83 @@ Para que os artefatos sejam julgados, é <strong>obrigatório a submissão de um
 <p>É esperado que o <strong>revisor consiga reproduzir as principais reivindicações apresentadas no artigo</strong>. Para obter este selo é esperado:</p>
 <ol>
 <li>instrução para executar as principais reivindicações (e.g., resultados dos principais gráficos/tabelas);</li>
-<li>descrição de um processo de como foram executados os experimentos para chegar até o resultado do artigo;</li>
-<li>descrição de detalhes técnicos específicos do ambiente (quando aplicável). Por exemplo, incluir detalhes da infraestrutura utilizada na Amazon Cloud ou Google Cloud. Eventualmente, incluir até chaves de acesso para permitir a reprodução do experimento.</li>
+<li>descrição de um processo de como foram executados os experimentos para chegar até o resultado do artigo.
+Para atender esses requisitos sugere-se a inclusão de script(s) que automatizem ao máximo todo o processo de reprodução.</li>
 </ol>
-<h2 id="apêndice-obrigatório"><a class="header" href="#apêndice-obrigatório">Apêndice (Obrigatório)</a></h2>
-<p>Para facilitar o processo de avaliação dos artefatos, foi criado um modelo de apêndice (Obrigatório) onde os autores descrevem quais selos devem ser considerados no processo de avaliação do artefato e incluem informações para auxiliar os revisores do Comitê Técnico de Artefatos. O modelo LaTeX de apêndice está disponível em <a href="https://www.overleaf.com/read/jscjwsnqsxfh">Exemplo-Apendice</a>.</p>
-<p>É obrigatório que as Seções de 1 a 4 estejam presentes. Se você tiver qualquer dúvida, por favor, entre em contato conosco.</p>
-<blockquote>
-<p><strong>Note</strong>
-Antes de submeter o seu artefato e apêndice, é interessante que os autores realizem a instalação e execução do seu artefato em um ambiente novo (máquina virtual) seguindo somente as instruções presente no apêndice.</p>
-</blockquote>
-<h2 id="exemplos-artefatos-sbseg23"><a class="header" href="#exemplos-artefatos-sbseg23">Exemplos Artefatos SBSeg'23</a></h2>
-<p>Um exemplo do <a href="./data/235027-5.pdf">Apêndice</a>. Resultado após o processo de avaliação do comitê <a href="./data/235027-2-selos-de-artefatos.pdf">Artigo</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="intruções-para-revisão"><a class="header" href="#intruções-para-revisão">Intruções para revisão</a></h1>
-<p>Seu objetivo como um revisor de artefato consiste em garantir que a qualidade do artefato corresponda com o conteúdo do artigo e os requisitos mínimos esperados para a obtenção de cada selo. Para realizar esta atividade com excelência, antes de avaliar os artefatos <strong>(i)</strong> leia o artigo; e <strong>(ii)</strong> defina as principais contribuições do trabalho. Estas duas etapas tornam o processo de avaliação de cada selo mais simples.</p>
+<p>Seu objetivo como um revisor de artefato consiste em garantir que a qualidade do artefato corresponda com o conteúdo do artigo e os requisitos mínimos esperados para a obtenção de cada selo. 
+Para realizar esta atividade com excelência, antes de avaliar os artefatos <strong>(i)</strong> leia o artigo; e <strong>(ii)</strong> defina as principais contribuições do trabalho. Estas duas etapas tornam o processo de avaliação de cada selo mais simples.</p>
 <blockquote>
 <p><strong>Note</strong>
 Observe que o período de revisão é relativamente curto. Recomendamos iniciar suas revisões assim que receber sua tarefa.</p>
 </blockquote>
 <h2 id="passos-para-a-avaliação-de-um-artefato"><a class="header" href="#passos-para-a-avaliação-de-um-artefato">Passos para a avaliação de um artefato</a></h2>
 <p>O processo de revisão pode ser realizado em um ambiente de sua preferência, desde que bata os requisitos mínimos do ambiente de execução esperado para o artefato. Recomendamos a execução dos artefatos (quando aplicável) em um ambiente virtual por trazer praticidade para os revisores e garantir que componentes presentes na sua máquina local não prejudiquem o processo de avaliação (um clean install em um ambiente novo pode reduzir imprevistos).</p>
-<p>Caso recursos adicionais sejam necessários (infraestrutura de nuvem, chaves SSH, etc.) estas informações devem estar presentes no apêndice do artefato.</p>
+<p>Caso recursos adicionais sejam necessários (infraestrutura de nuvem, chaves SSH, etc.) estas informações devem estar presentes no Apêndice do artefato.</p>
 <p>Os artefatos em avaliação já são artigos aceitos pelo comitê técnico do SBRC'25. Desta forma, não há necessidade de avaliar sua solidez científica. No entanto, caso você encontre algum problema, relate entrando em contato com os coordenadores de avaliação de artefatos.</p>
 <blockquote>
 <p><strong>Note</strong>
 Lembre-se de que todos os artefatos, análises e discussões são confidenciais</p>
 </blockquote>
 <h2 id="processo-de-revisão"><a class="header" href="#processo-de-revisão">Processo de Revisão</a></h2>
-<p>O processo de revisão está dividido em duas etapas. <strong>Primeiramente</strong>, você como revisor deve selecionar os trabalhos que possuem afeição/familiaridade com o assunto para o posterior processo de revisão. Faça a escolha de trabalhos o quanto antes para que o comitê tenha conhecimento das revisões de cada membro. Os trabalhos estão presentes em uma planilha online, cada membro do CTA e do CTAA irá escolher 3 ou mais trabalhos para avaliar.</p>
-<p>Após  ter selecionado seus trabalhos, você já pode começar a realizar as revisões. Para orientar esta <strong>segunda etapa</strong>, um conjunto de instruções com pontos chaves do processo de avaliação de artefato foi definido pelo comitê. As instruções definindo os requisitos para a obtenção de cada selo.</p>
+<p>O processo de revisão está dividido em duas etapas. <strong>Primeiramente</strong>, você como revisor deve selecionar os trabalhos que possuem afeição/familiaridade com o assunto para o posterior processo de revisão. Faça a escolha de trabalhos o quanto antes para que o comitê tenha conhecimento das revisões de cada membro. Cada membro do CTA irá escolher 3 ou mais trabalhos para avaliar (número a ser confirmado pelos coordenadores posteriormente).</p>
+<p>Após ter selecionado seus trabalhos, você já pode começar a realizar as revisões. Para orientar esta <strong>segunda etapa</strong>, um conjunto de instruções com pontos chaves do processo de avaliação de artefato foi definido pelo comitê, conforme consta nas definições de requisitos para a obtenção de cada selo.
+Para que o artefato esteja apto a receber um selo, os respectivos requisitos devem ser satisfeitos.</p>
 <p>Para que o trabalho/artefato seja apto a receber o selo, os respectivos requisitos devem ser alcançados:</p>
 <h3 id="artefatos-disponíveis-selod-1"><a class="header" href="#artefatos-disponíveis-selod-1">Artefatos Disponíveis (SeloD)</a></h3>
-<p>É esperado que o código e/ou dados estejam <strong>disponíveis em um repositório estável</strong> (como GitHub e GitLab). Neste repositório é esperado encontrar um <a href="https://github.com/matiassingers/awesome-readme">README.md</a> com uma <strong>documentação mínima</strong> descrevendo o objetivo do artefato, com o respectivo <strong>título</strong> e <strong>resumo</strong> do artigo.</p>
+<p>É esperado que o código e/ou dados estejam <strong>disponíveis em um repositório estável</strong> (como GitHub e GitLab). Neste repositório é esperado encontrar um <a href="https://github.com/matiassingers/awesome-readme">README.md</a> com os <strong>requisitos mínimos do README.md</strong>. Os requisitos mínimos do README.md sendo:</p>
+<pre><code># Título projeto
+
+Resumo descrevendo o objetivo do artefato, com o respectivo título e resumo do artigo.
+
+# Estrutura do readme.md
+
+Apresenta a estrutura do readme.md, descrevendo como o repositório está organizado.
+
+# Selos Considerados
+
+Os autores devem descrever quais selos devem ser considerados no processo de avaliação. Como por exemplo: ``Os selos considerados são: Disponíveis e Funcionais.''
+
+# Informações básicas
+
+Esta seção deve apresentar informações básicas de todos os componentes necessários para a execução e replicação dos experimentos. 
+Descrevendo todo o ambiente de execução, com requisitos de hardware e software.
+
+# Dependências
+
+Informações relacionadas a benchmarks utilizados e dependências para a execução devem ser descritas nesta seção. 
+Busque deixar o mais claro possível, apresentando informações como versões de dependências e processos para acessar recursos de terceiros caso necessário.
+
+# Preocupações com segurança
+
+Caso a execução do artefato ofereça algum tipo de risco para os avaliadores. Este risco deve ser descrito e o processo adequado para garantir a segurança dos revisores deve ser apresentado.
+
+# Instalação
+
+O processo de baixar e instalar a aplicação deve ser descrito nesta seção. Ao final deste processo já é esperado que a aplicação/benchmark/ferramenta consiga ser executada.
+
+# Teste mínimo
+
+Esta seção deve apresentar um passo a passo para a execução de um teste mínimo.
+Um teste mínimo de execução permite que os revisores consigam observar algumas funcionalidades do artefato. 
+Este teste é útil para a identificação de problemas durante o processo de instalação.
+
+# Experimentos
+
+Esta seção deve descrever um passo a passo para a execução e obtenção dos resultados do artigo. Permitindo que os revisores consigam alcançar as reivindicações apresentadas no artigo. 
+Cada reivindicações deve ser apresentada em uma subseção, com detalhes de arquivos de configurações a serem alterados, comandos a serem executados, flags a serem utilizadas, tempo esperado de execução, expectativa de recursos a serem utilizados como 1GB RAM/Disk e resultado esperado. 
+
+Caso o processo para a reprodução de todos os experimento não seja possível em tempo viável. Os autores devem escolher as principais reivindicações apresentadas no artigo e apresentar o respectivo processo para reprodução.
+
+## Reivindicações #X
+
+## Reivindicações #Y
+
+# LICENSE
+
+Apresente a licença.
+
+</code></pre>
 <h3 id="artefatos-funcionais-selof-1"><a class="header" href="#artefatos-funcionais-selof-1">Artefatos Funcionais (SeloF)</a></h3>
 <p>É esperado que o código e/ou artefato possa ser <strong>executado</strong> e o revisor consiga observar algumas de suas <strong>funcionalidades</strong>. Para adquirir este artefato, é importante que informações adicionais estejam presentes no README.md do repositório, como</p>
 <ol>
@@ -272,38 +390,14 @@ Lembre-se de que todos os artefatos, análises e discussões são confidenciais<
 <ol>
 <li>instrução para executar as principais reivindicações (e.g., resultados dos principais gráficos/tabelas);</li>
 <li>descrição de um processo de como foram executados os experimentos para chegar até o resultado do artigo;</li>
-<li>descrição de detalhes técnicos específicos do ambiente (quando aplicável). Por exemplo, incluir detalhes da infraestrutura utilizada na Amazon Cloud ou Google Cloud. Eventualmente, incluir até chaves de acesso para permitir a reprodução do experimento.</li>
 </ol>
 <h2 id="entrega-das-revisões"><a class="header" href="#entrega-das-revisões">Entrega das Revisões</a></h2>
 <p>Para cada artefato, você deve produzir uma breve revisão justificando a razão por atribuir ou negar um selo ao artefato. Esta avaliação só deve ser completada após o processo de avaliação tenha sido realizado.</p>
-<p>Para facilitar o processo de avaliação, complete os comentários para cada selo seguindo o seguinte modelo que levam em consideração os critérios necessários para receber cada selo.</p>
-<p>Exemplos:</p>
-<pre><code>(caso 1, selo atribuido) SeloD: Artefato publicamente Disponível (comentários)
-+ disponíveis em um repositório estável
-+ documentação mínima
-+ título
-+ resumo
-Recomendo a atribuição do selo.
-</code></pre>
-<pre><code>(caso 2, selo não atribuido) SeloD: Artefato publicamente Disponível (comentários)
-+ disponíveis em um repositório estável
-- documentação mínima
-+ título
-- resumo
-Não posso recomendar a atribuição do selo, por não  possuir uma documentação mínima e resumo do artigo.
-</code></pre>
-<pre><code>(caso 3, CASO O SELO NÃO TENHA SIDO SOLICITADO) SeloD: Artefato publicamente Disponível (comentários)
-O selo não foi solicitado para esta categoria.
-</code></pre>
-<p>Utilize dos sinais (-) e (+) para demonstrar qual dos critérios o artefato não esteja alcançando (caso utilize o sinal de -) ou esteja alcançando (caso utilize o sinal de +). Também é importante ressaltar a conclusão da revisão, explanando as motivações quando o artefato não alcança os critérios mínimos esperados para cada selo.</p>
-<blockquote>
-<p><strong>Note</strong>
-Imagine que a seção de comentário deve ser tratada como se fosse uma seção de comentários para os autores em um processo de revisão onde o feedback seria apresentado para os autores em uma fase posterior.</p>
-</blockquote>
+<p>Para facilitar o processo de avaliação, um exemplos está disponível junto ao formulário de submissão.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="organizadores"><a class="header" href="#organizadores">Organizadores</a></h1>
-<h2 id="coordenadores-do-cta-e-ctaa"><a class="header" href="#coordenadores-do-cta-e-ctaa">Coordenadores do CTA e CTAA</a></h2>
-<p>Diego Kreutz (UNIPAMPA)<br />
-Tiago Heinrich (UFPR)</p>
+<h2 id="coordenadores-do-cta"><a class="header" href="#coordenadores-do-cta">Coordenadores do CTA</a></h2>
+<p>Rodrigo Brandão Mansilha (UNIPAMPA)<br />
+Tiago Heinrich (UFPR/MPI)</p>
 <h2 id="comitê-técnico-de-artefatos-cta"><a class="header" href="#comitê-técnico-de-artefatos-cta">Comitê Técnico de Artefatos (CTA)</a></h2>
 <p>Em construção ....</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="contato"><a class="header" href="#contato">Contato</a></h1>
