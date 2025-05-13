@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="light" dir="ltr">
+<html lang="en" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -7,7 +7,7 @@
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
@@ -24,26 +24,29 @@
         <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
-    </head>
-    <body class="sidebar-visible no-js">
-    <div id="body-container">
-        <!-- Provide site root to javascript -->
-        <script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script>
 
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
                     localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
@@ -57,24 +60,22 @@
 
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script>
-            var theme;
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
+            const html = document.documentElement;
             html.classList.remove('light')
             html.classList.add(theme);
-            var body = document.querySelector('body');
-            body.classList.remove('no-js')
-            body.classList.add('js');
+            html.classList.add("js");
         </script>
 
         <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var body = document.querySelector('body');
-            var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -82,45 +83,25 @@
                 sidebar = 'hidden';
             }
             sidebar_toggle.checked = sidebar === 'visible';
-            body.classList.remove('sidebar-visible');
-            body.classList.add("sidebar-" + sidebar);
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introducao.html" class="active"><strong aria-hidden="true">1.</strong> Avaliação de Artefato</a></li><li class="chapter-item expanded affix "><li class="part-title">SBSeg '25</li><li class="spacer"></li><li class="chapter-item expanded "><a href="chamadaSBSeg25.html"><strong aria-hidden="true">2.</strong> Chamada para Artefatos</a></li><li class="chapter-item expanded "><a href="subinstrucoes.html"><strong aria-hidden="true">3.</strong> Instruções de submissão</a></li><li class="chapter-item expanded "><a href="revinstrucoes.html"><strong aria-hidden="true">4.</strong> Instruções para revisão</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="results.html"><strong aria-hidden="true">5.</strong> Resultados</a></li><li class="chapter-item expanded "><a href="comite.html"><strong aria-hidden="true">6.</strong> Comitê</a></li><li class="chapter-item expanded "><a href="contato.html"><strong aria-hidden="true">7.</strong> Contato</a></li></ol>
-            </div>
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <!-- Track and set sidebar scroll position -->
-        <script>
-            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
-            sidebarScrollbox.addEventListener('click', function(e) {
-                if (e.target.tagName === 'A') {
-                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
-                }
-            }, { passive: true });
-            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
-            sessionStorage.removeItem('sidebar-scroll');
-            if (sidebarScrollTop) {
-                // preserve sidebar scroll position when navigating via links within sidebar
-                sidebarScrollbox.scrollTop = sidebarScrollTop;
-            } else {
-                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
-                var activeSection = document.querySelector('#sidebar .active');
-                if (activeSection) {
-                    activeSection.scrollIntoView({ block: 'center' });
-                }
-            }
-        </script>
-
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -130,6 +111,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
@@ -176,7 +158,7 @@
                         <h1 id="avaliação-de-artefato-do-sbseg25"><a class="header" href="#avaliação-de-artefato-do-sbseg25">Avaliação de Artefato do SBSeg'25</a></h1>
 <!--A Trilha Principal, Salão de Ferramentas (SF) e Workshop de Trabalhos de Iniciação Científica e de Graduação (WTICG) irão permitir que autores submetam artefatos  relacionados ao artigo submetido, podendo tais artefatos serem software, dados, documentação complementar, resultados brutos, provas de conceito, modelos, avaliações detalhadas, benchmarks etc.-->
 <p>O SBSeg vai permitir que autores submetam artefatos  relacionados ao artigo submetido, podendo tais artefatos serem software, dados, documentação complementar, resultados brutos, provas de conceito, modelos, avaliações detalhadas, benchmarks etc.</p>
-<p>Este recurso é essencial para a completa compreensão de  um artigo científico, que vai além do documento em si. A qualidade de um artefato tende a ser tão importante quanto o próprio artigo científico. Normalmente, as conferências no Brasil não oferecem meios formais para submeter e avaliar nada além do próprio artigo. Rompendo com essa tradição, o SBSeg realizará a coleta de artefatos, sendo estes para a Trilha Principal e Salão de Ferramentas. <!--sendo estes obrigatórios para o Salão de Ferramentas (SF) e opcionais para o Workshop de Trabalhos de Iniciação Científica e de Graduação (WTICG) e Trilha Principal.--> </p>
+<p>Este recurso é essencial para a completa compreensão de  um artigo científico, que vai além do documento em si. A qualidade de um artefato tende a ser tão importante quanto o próprio artigo científico. Normalmente, as conferências no Brasil não oferecem meios formais para submeter e avaliar nada além do próprio artigo. Rompendo com essa tradição, o SBSeg realizará a coleta de artefatos, sendo estes para a Trilha Principal e Salão de Ferramentas. <!--sendo estes obrigatórios para o Salão de Ferramentas (SF) e opcionais para o Workshop de Trabalhos de Iniciação Científica e de Graduação (WTICG) e Trilha Principal.--></p>
 <p>O processo de submissão de artefatos vai ocorrer após a notificação dos aceites dos trabalhos submetidos e os autores deverão descrever os <a href="./chamadaSBSeg25.html">selos de qualidade</a> que devem ser considerados para o artefato, bem como uma documentação detalhada seguindo as <a href="./subinstrucoes.html">regras de submissão.</a></p>
 <p>O processo de avaliação de artefatos vai ter como base o processo de avaliação realizado por conferências de renome como USENIX, CoNEXT, SIGCOMM e EuroSys e será realizado pelo Comitê Técnico de Artefatos (CTA). Para os autores que submeterão artefatos, é fundamental que façam a leitura das descrições dos selos disponíveis e das instruções sobre o que é esperado de um artefato.</p>
 

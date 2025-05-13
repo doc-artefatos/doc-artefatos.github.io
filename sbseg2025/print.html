@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="light" dir="ltr">
+<html lang="en" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -8,7 +8,7 @@
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
@@ -25,26 +25,29 @@
         <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
-    </head>
-    <body class="sidebar-visible no-js">
-    <div id="body-container">
-        <!-- Provide site root to javascript -->
-        <script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script>
 
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
                     localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
@@ -58,24 +61,22 @@
 
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script>
-            var theme;
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
+            const html = document.documentElement;
             html.classList.remove('light')
             html.classList.add(theme);
-            var body = document.querySelector('body');
-            body.classList.remove('no-js')
-            body.classList.add('js');
+            html.classList.add("js");
         </script>
 
         <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var body = document.querySelector('body');
-            var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -83,45 +84,25 @@
                 sidebar = 'hidden';
             }
             sidebar_toggle.checked = sidebar === 'visible';
-            body.classList.remove('sidebar-visible');
-            body.classList.add("sidebar-" + sidebar);
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introducao.html"><strong aria-hidden="true">1.</strong> Avaliação de Artefato</a></li><li class="chapter-item expanded affix "><li class="part-title">SBSeg '25</li><li class="spacer"></li><li class="chapter-item expanded "><a href="chamadaSBSeg25.html"><strong aria-hidden="true">2.</strong> Chamada para Artefatos</a></li><li class="chapter-item expanded "><a href="subinstrucoes.html"><strong aria-hidden="true">3.</strong> Instruções de submissão</a></li><li class="chapter-item expanded "><a href="revinstrucoes.html"><strong aria-hidden="true">4.</strong> Instruções para revisão</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="results.html"><strong aria-hidden="true">5.</strong> Resultados</a></li><li class="chapter-item expanded "><a href="comite.html"><strong aria-hidden="true">6.</strong> Comitê</a></li><li class="chapter-item expanded "><a href="contato.html"><strong aria-hidden="true">7.</strong> Contato</a></li></ol>
-            </div>
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <!-- Track and set sidebar scroll position -->
-        <script>
-            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
-            sidebarScrollbox.addEventListener('click', function(e) {
-                if (e.target.tagName === 'A') {
-                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
-                }
-            }, { passive: true });
-            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
-            sessionStorage.removeItem('sidebar-scroll');
-            if (sidebarScrollTop) {
-                // preserve sidebar scroll position when navigating via links within sidebar
-                sidebarScrollbox.scrollTop = sidebarScrollTop;
-            } else {
-                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
-                var activeSection = document.querySelector('#sidebar .active');
-                if (activeSection) {
-                    activeSection.scrollIntoView({ block: 'center' });
-                }
-            }
-        </script>
-
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -131,6 +112,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
@@ -177,7 +159,7 @@
                         <h1 id="avaliação-de-artefato-do-sbseg25"><a class="header" href="#avaliação-de-artefato-do-sbseg25">Avaliação de Artefato do SBSeg'25</a></h1>
 <!--A Trilha Principal, Salão de Ferramentas (SF) e Workshop de Trabalhos de Iniciação Científica e de Graduação (WTICG) irão permitir que autores submetam artefatos  relacionados ao artigo submetido, podendo tais artefatos serem software, dados, documentação complementar, resultados brutos, provas de conceito, modelos, avaliações detalhadas, benchmarks etc.-->
 <p>O SBSeg vai permitir que autores submetam artefatos  relacionados ao artigo submetido, podendo tais artefatos serem software, dados, documentação complementar, resultados brutos, provas de conceito, modelos, avaliações detalhadas, benchmarks etc.</p>
-<p>Este recurso é essencial para a completa compreensão de  um artigo científico, que vai além do documento em si. A qualidade de um artefato tende a ser tão importante quanto o próprio artigo científico. Normalmente, as conferências no Brasil não oferecem meios formais para submeter e avaliar nada além do próprio artigo. Rompendo com essa tradição, o SBSeg realizará a coleta de artefatos, sendo estes para a Trilha Principal e Salão de Ferramentas. <!--sendo estes obrigatórios para o Salão de Ferramentas (SF) e opcionais para o Workshop de Trabalhos de Iniciação Científica e de Graduação (WTICG) e Trilha Principal.--> </p>
+<p>Este recurso é essencial para a completa compreensão de  um artigo científico, que vai além do documento em si. A qualidade de um artefato tende a ser tão importante quanto o próprio artigo científico. Normalmente, as conferências no Brasil não oferecem meios formais para submeter e avaliar nada além do próprio artigo. Rompendo com essa tradição, o SBSeg realizará a coleta de artefatos, sendo estes para a Trilha Principal e Salão de Ferramentas. <!--sendo estes obrigatórios para o Salão de Ferramentas (SF) e opcionais para o Workshop de Trabalhos de Iniciação Científica e de Graduação (WTICG) e Trilha Principal.--></p>
 <p>O processo de submissão de artefatos vai ocorrer após a notificação dos aceites dos trabalhos submetidos e os autores deverão descrever os <a href="./chamadaSBSeg25.html">selos de qualidade</a> que devem ser considerados para o artefato, bem como uma documentação detalhada seguindo as <a href="./subinstrucoes.html">regras de submissão.</a></p>
 <p>O processo de avaliação de artefatos vai ter como base o processo de avaliação realizado por conferências de renome como USENIX, CoNEXT, SIGCOMM e EuroSys e será realizado pelo Comitê Técnico de Artefatos (CTA). Para os autores que submeterão artefatos, é fundamental que façam a leitura das descrições dos selos disponíveis e das instruções sobre o que é esperado de um artefato.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="chamada-para-artefatos"><a class="header" href="#chamada-para-artefatos">Chamada para Artefatos</a></h1>
@@ -191,11 +173,21 @@
 </ol>
 <p>Antes de enviar seu artefato, verifique os <a href="./subinstrucoes.html">requisitos para a obtenção de cada selo</a>. Caso tenha alguma dúvida, entre em <a href="./contato.html">contato</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="instruções-de-submissão"><a class="header" href="#instruções-de-submissão">Instruções de submissão</a></h1>
-<p>Quatro selos de qualidade podem ser considerados para um artefato. 
-Após a notificação de aceite, os autores podem opcionalmente submeter o(s) artefato(s) relacionado(s) ao artigo.</p>
-<p>Para que os artefatos sejam julgados, é <strong>obrigatório que o README.md submetido contenha os requisitos mínimos exigidos</strong>. Onde será descrito quais selos devem ser considerados na avaliação do(s) artefato(s) do trabalho e fornece as instruções necessárias para os revisores conseguirem lidar adequadamente com os mesmos (especialmente no caso de software ou dados).</p>
+<p>Quatro selos de qualidade podem ser considerados para um artefato.
+Após a notificação de aceite do artigo, os autores podem opcionalmente submeter o(s) artefato(s) relacionado(s).
+Os autores devem fazer o registro do artefato na plataforma <a href="https://hotcrp.c3sl.ufpr.br/">hotcrp</a>.
+Este registro requer algumas informações como contato dos autores, um link para o artefato e opcionalmente um apêndice.</p>
+<p>Importante ressaltar que para um artefato o comitê de revisão espera que:</p>
+<ol>
+<li><a href="subinstrucoes.html#requisitos-m%C3%ADnimo-readmemd-obrigat%C3%B3rio">Os requisitos mínimos do README</a> estejam presentes no repositório;</li>
+<li>Informações sobre <a href="subinstrucoes.html#recursos-espec%C3%ADficos-ou-restri%C3%A7%C3%B5es">recursos específicos</a> estejam presentes no apêndice.</li>
+<li>O artefato atenda os <a href="subinstrucoes.html#requisitos-por-selo">critérios dos selos solicitados</a>;</li>
+</ol>
+<p>Todo o processo de revisão do artefato será realizado pela plataforma <a href="https://hotcrp.c3sl.ufpr.br/">hotcrp</a>.
+Os autores com artefatos registrados para o processo de revisão serão notificados sobre o acesso à plataforma e devem observar por emails enviados pela plataforma com dúvidas do comitê de revisão.
+Todo o processo de comunicação dos revisores de artefatos com os autores é realizado pelo hotcrp.</p>
 <h2 id="requisitos-mínimo-readmemd-obrigatório"><a class="header" href="#requisitos-mínimo-readmemd-obrigatório">Requisitos mínimo README.md (Obrigatório)</a></h2>
-<p>Para facilitar o processo de avaliação dos artefatos, foi criado um modelo de README.md (Obrigatório) com todos os campos mínimos esperados para um artefato. </p>
+<p>Para facilitar o processo de avaliação dos artefatos, foi criado um modelo de README.md (Obrigatório) com todos os campos mínimos esperados para um artefato.</p>
 <pre><code># Título projeto
 
 Resumo descrevendo o objetivo do artefato, com o respectivo título e resumo do artigo.
@@ -248,7 +240,7 @@ Caso o processo para a reprodução de todos os experimento não seja possível 
 Apresente a licença.
 
 </code></pre>
-<p>É obrigatório que <strong>TODAS</strong> as Seções apresentadas no requisito mínimo README.md estejam presentes. 
+<p>É obrigatório que <strong>TODAS</strong> as Seções apresentadas no requisito mínimo README.md estejam presentes.
 Se você tiver qualquer dúvida, por favor, entre em contato conosco.</p>
 <blockquote>
 <p><strong>Note</strong>
@@ -256,26 +248,25 @@ Antes de submeter o seu artefato, é interessante que os autores realizem a inst
 </blockquote>
 <h3 id="recursos-específicos-ou-restrições"><a class="header" href="#recursos-específicos-ou-restrições">Recursos específicos ou restrições</a></h3>
 <p>Caso <strong>recursos adicionais</strong> sejam necessários (infraestrutura de nuvem, chaves SSH, etc.) para a avaliação do artefato, estas informações devem ser submetidas através de um apêndice.
-Neste os autores incluem informações adicionais (privadas, como chaves SSH para acessar o Google Cloud) para auxiliar os revisores do Comitê Técnico de Artefatos. 
+Neste os autores incluem informações adicionais (privadas, como chaves SSH para acessar o Google Cloud) para auxiliar os revisores do Comitê Técnico de Artefatos.
 O modelo LaTeX de apêndice está disponível em <a href="https://www.overleaf.com/read/jscjwsnqsxfh">Exemplo-Apendice</a>.
 Todos os campos devem ser apresentados no apêndice, além dos requisitos mínimos para o README.md que são obrigatórios.</p>
 <p>O apêndice é um critério <strong>adicional</strong> no momento que recursos específicos acabam sendo necessários para a avaliação do artefato ou restrições de acesso existam.</p>
 <h3 id="exemplos-de-apendices"><a class="header" href="#exemplos-de-apendices">Exemplos de Apendices</a></h3>
-<div class="table-wrapper"><table><thead><tr><th>Evento</th><th>Apêndice</th><th>Artefato</th><th>Artigo</th></tr></thead><tbody>
-<tr><td>SBRC'25</td><td><a href="./data/hotcrp-paper1-apendice.pdf">Apêndice link</a></td><td><a href="https://github.com/datasets-community/VulnSyncAI">Artefato link</a></td><td><a href="./data/7880.pdf">Artigo link</a></td></tr>
-<tr><td>SBSeg'23</td><td><a href="./data/235027-5.pdf">Apêndice link</a></td><td><a href="https://github.com/AleMarquis/ArtigoWTICGSBSeg23">Artefato link</a></td><td><a href="./data/235027-2-selos-de-artefatos.pdf">Artigo link</a></td></tr>
-<tr><td>USENIX'23</td><td><a href="https://www.usenix.org/system/files/usenixsecurity23-appendix-shen-bingyu-logging.pdf">Apêndice link</a></td><td><a href="https://github.com/byshen/seclog_ae">Artefato link</a></td><td><a href="https://www.usenix.org/system/files/sec23summer_2-shen-prepub.pdf">Artigo link</a></td></tr>
-<tr><td>USENIX'23</td><td><a href="https://www.usenix.org/system/files/usenixsecurity23-appendix-liu-sihang.pdf">Apêndice link</a></td><td><a href="https://github.com/Systems-ShiftLab/optane_sec23_ae/">Artefato link</a></td><td><a href="https://www.usenix.org/system/files/sec23summer_39-liu_shang-prepub_1.pdf">Artigo link</a></td></tr>
-<tr><td>USENIX'23</td><td><a href="https://www.usenix.org/system/files/usenixsecurity23-appendix-henzinger.pdf">Apêndice link</a></td><td><a href="https://github.com/ahenzinger/simplepir">Artefato link</a></td><td><a href="https://www.usenix.org/system/files/sec23summer_27-henzinger-prepub.pdf">Artigo link</a></td></tr>
-</tbody></table>
-</div>
+<p>|Evento|Apêndice|Artefato|Artigo|
+|||||
+|SBRC'25|<a href="./data/hotcrp-paper1-apendice.pdf">Apêndice link</a>| <a href="https://github.com/datasets-community/VulnSyncAI">Artefato link</a> | <a href="./data/7880.pdf">Artigo link</a> |
+|SBSeg'23|<a href="./data/235027-5.pdf">Apêndice link</a>| <a href="https://github.com/AleMarquis/ArtigoWTICGSBSeg23">Artefato link</a> | <a href="./data/235027-2-selos-de-artefatos.pdf">Artigo link</a> |
+|USENIX'23|<a href="https://www.usenix.org/system/files/usenixsecurity23-appendix-shen-bingyu-logging.pdf">Apêndice link</a>|<a href="https://github.com/byshen/seclog_ae">Artefato link</a>|<a href="https://www.usenix.org/system/files/sec23summer_2-shen-prepub.pdf">Artigo link</a>|
+|USENIX'23|<a href="https://www.usenix.org/system/files/usenixsecurity23-appendix-liu-sihang.pdf">Apêndice link</a>|<a href="https://github.com/Systems-ShiftLab/optane_sec23_ae/">Artefato link</a>|<a href="https://www.usenix.org/system/files/sec23summer_39-liu_shang-prepub_1.pdf">Artigo link</a>
+|USENIX'23|<a href="https://www.usenix.org/system/files/usenixsecurity23-appendix-henzinger.pdf">Apêndice link</a>|<a href="https://github.com/ahenzinger/simplepir">Artefato link</a>|<a href="https://www.usenix.org/system/files/sec23summer_27-henzinger-prepub.pdf">Artigo link</a>|</p>
 <h2 id="requisitos-por-selo"><a class="header" href="#requisitos-por-selo">Requisitos por selo</a></h2>
 <p>Para que o trabalho/artefato seja apto a receber o selo, os respectivos requisitos devem ser alcançados:</p>
 <h3 id="artefatos-disponíveis-selod"><a class="header" href="#artefatos-disponíveis-selod">Artefatos Disponíveis (SeloD)</a></h3>
-<p>É esperado que o código e/ou dados estejam <strong>disponíveis em um repositório estável</strong> (como GitHub e GitLab). 
+<p>É esperado que o código e/ou dados estejam <strong>disponíveis em um repositório estável</strong> (como GitHub e GitLab).
 Neste repositório é esperado encontrar um <a href="https://github.com/matiassingers/awesome-readme">README.md</a> com os <strong>requisitos mínimos</strong>. O arquivo README.md do repositório pode ser o mesmo arquivo submetido para apreciação do CTA.</p>
 <h3 id="artefatos-funcionais-selof"><a class="header" href="#artefatos-funcionais-selof">Artefatos Funcionais (SeloF)</a></h3>
-<p>É esperado que o código e/ou artefato possa ser <strong>executado</strong> e o revisor consiga observar algumas de suas <strong>funcionalidades</strong>. 
+<p>É esperado que o código e/ou artefato possa ser <strong>executado</strong> e o revisor consiga observar algumas de suas <strong>funcionalidades</strong>.
 Para adquirir este artefato, é importante que informações adicionais estejam presentes no README.md do repositório, como</p>
 <ol>
 <li>lista de dependências;</li>
@@ -299,7 +290,7 @@ Para adquirir este artefato, é importante que informações adicionais estejam 
 Para atender esses requisitos sugere-se a inclusão de script(s) que automatizem ao máximo todo o processo de reprodução;</li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="intruções-para-revisão"><a class="header" href="#intruções-para-revisão">Intruções para revisão</a></h1>
-<p>Seu objetivo como um revisor de artefato consiste em garantir que a qualidade do artefato corresponda com o conteúdo do artigo e os <strong>requisitos mínimos esperados para a obtenção de cada selo</strong>. </p>
+<p>Seu objetivo como um revisor de artefato consiste em garantir que a qualidade do artefato corresponda com o conteúdo do artigo e os <strong>requisitos mínimos esperados para a obtenção de cada selo</strong>.</p>
 <blockquote>
 <p><strong>Note:</strong>
 Observe que o período de revisão é relativamente curto. Recomendamos iniciar suas revisões assim que receber sua tarefa.</p>
@@ -313,7 +304,7 @@ Observe que o período de revisão é relativamente curto. Recomendamos iniciar 
 Lembre-se de que todos os artefatos, análises e discussões são confidenciais.</p>
 </blockquote>
 <h2 id="processo-de-revisão"><a class="header" href="#processo-de-revisão">Processo de Revisão</a></h2>
-<p>No momento que um artefato é alocado para revisão, você já pode começar o trabalho de avaliação. 
+<p>No momento que um artefato é alocado para revisão, você já pode começar o trabalho de avaliação.
 Para realizar esta atividade com excelência, você deve considerar os quatro Selos e seus respectivos requisitos mínimos que devem ser alcançados para a alocação de um selo:</p>
 <h3 id="artefatos-disponíveis-selod-1"><a class="header" href="#artefatos-disponíveis-selod-1">Artefatos Disponíveis (SeloD)</a></h3>
 <p>É esperado que o código e/ou dados estejam <strong>disponíveis em um repositório estável</strong> (como GitHub e GitLab). Neste repositório é esperado encontrar um <a href="https://github.com/matiassingers/awesome-readme">README.md</a> com os <strong>requisitos mínimos do README.md</strong>. Os requisitos mínimos do README.md sendo:</p>
