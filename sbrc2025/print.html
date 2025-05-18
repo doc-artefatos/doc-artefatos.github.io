@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="pt" class="light" dir="ltr">
+<html lang="pt" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -8,7 +8,7 @@
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
@@ -25,26 +25,29 @@
         <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
-    </head>
-    <body class="sidebar-visible no-js">
-    <div id="body-container">
-        <!-- Provide site root to javascript -->
-        <script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script>
 
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
                     localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
@@ -58,24 +61,22 @@
 
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script>
-            var theme;
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
+            const html = document.documentElement;
             html.classList.remove('light')
             html.classList.add(theme);
-            var body = document.querySelector('body');
-            body.classList.remove('no-js')
-            body.classList.add('js');
+            html.classList.add("js");
         </script>
 
         <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var body = document.querySelector('body');
-            var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -83,45 +84,25 @@
                 sidebar = 'hidden';
             }
             sidebar_toggle.checked = sidebar === 'visible';
-            body.classList.remove('sidebar-visible');
-            body.classList.add("sidebar-" + sidebar);
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introducao.html">Avaliação de Artefato</a></li><li class="chapter-item expanded affix "><li class="part-title">SF'25</li><li class="spacer"></li><li class="chapter-item expanded "><a href="chamadasSF25.html">Chamada para Artefatos</a></li><li class="chapter-item expanded "><a href="subinstrucoes.html">Instruções de submissão</a></li><li class="chapter-item expanded "><a href="revinstrucoes.html">Intruções para revisão</a></li><li class="chapter-item expanded "><a href="comite.html">Comitê</a></li><li class="chapter-item expanded "><a href="contato.html">Contato</a></li></ol>
-            </div>
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <!-- Track and set sidebar scroll position -->
-        <script>
-            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
-            sidebarScrollbox.addEventListener('click', function(e) {
-                if (e.target.tagName === 'A') {
-                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
-                }
-            }, { passive: true });
-            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
-            sessionStorage.removeItem('sidebar-scroll');
-            if (sidebarScrollTop) {
-                // preserve sidebar scroll position when navigating via links within sidebar
-                sidebarScrollbox.scrollTop = sidebarScrollTop;
-            } else {
-                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
-                var activeSection = document.querySelector('#sidebar .active');
-                if (activeSection) {
-                    activeSection.scrollIntoView({ block: 'center' });
-                }
-            }
-        </script>
-
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -131,6 +112,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
@@ -176,11 +158,11 @@
                     <main>
                         <h1 id="avaliação-de-artefato-do-sf25"><a class="header" href="#avaliação-de-artefato-do-sf25">Avaliação de Artefato do SF'25</a></h1>
 <p>Em 2025, o Salão de Ferramentas (SF) contará com um Comitê Técnico de Artefatos (CTA) para avaliar os artefatos dos artigos aceitos. Tais artefatos incluem software, dados, documentação complementar, resultados brutos, provas de conceito, modelos, avaliações detalhadas, benchmarks, etc. O artefato é um recurso essencial para os trabalhos de pesquisa e a qualidade dele é tão importante quanto a do próprio artigo científico.</p>
-<p>O artefato será avaliado por um comitê específico, que poderá atribuir até quatro selos: </p>
+<p>O artefato será avaliado por um comitê específico, que poderá atribuir até quatro selos:</p>
 <ul>
-<li>Artefatos Disponíveis (SeloD), </li>
-<li>Artefatos Funcionais (SeloF), </li>
-<li>Artefatos Sustentáveis (SeloS), e </li>
+<li>Artefatos Disponíveis (SeloD),</li>
+<li>Artefatos Funcionais (SeloF),</li>
+<li>Artefatos Sustentáveis (SeloS), e</li>
 <li>Experimentos Reprodutíveis (SeloR).</li>
 </ul>
 <p>O processo de avaliação de artefatos terá como base o processo de avaliação realizado por conferências renomadas como SIGCOMM, USENIX, CoNEXT e EuroSys. É fundamental que os autores leiam as descrições dos selos disponíveis para artefatos, bem como a descrição do que é esperado de um artefato.</p>
@@ -194,14 +176,14 @@ Um artefatos pode ser um software, dados, documentação, resultados brutos, pro
 <li>Artefatos Sustentáveis (SeloS); e</li>
 <li>Experimentos Reprodutíveis (SeloR).</li>
 </ol>
-<p>Antes de enviar seu artefato, verifique os <a href="./subinstrucoes.html">requisitos para a aquisição de cada selo</a>. 
+<p>Antes de enviar seu artefato, verifique os <a href="./subinstrucoes.html">requisitos para a aquisição de cada selo</a>.
 Caso você tenha alguma dúvida ou preocupação, você pode entrar em <a href="./contato.html">contato</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="instruções-de-submissão"><a class="header" href="#instruções-de-submissão">Instruções de submissão</a></h1>
-<p>Quatro selos de qualidade podem ser considerados para um artefato. 
+<p>Quatro selos de qualidade podem ser considerados para um artefato.
 Junto com a submissão do camera ready do artigo, os autores <strong>devem obrigatoriamente</strong> submeter o artefato do artigo.
 Para que os artefatos sejam julgados, é <strong>obrigatório que o README.md submetido contenha os requisitos mínimos exigidos</strong>.</p>
 <h2 id="requisitos-mínimo-readmemd-obrigatório"><a class="header" href="#requisitos-mínimo-readmemd-obrigatório">Requisitos mínimo README.md (Obrigatório)</a></h2>
-<p>Para facilitar o processo de avaliação dos artefatos, foi criado um modelo de README.md (Obrigatório) com todos os campos mínimos esperados para um artefato. </p>
+<p>Para facilitar o processo de avaliação dos artefatos, foi criado um modelo de README.md (Obrigatório) com todos os campos mínimos esperados para um artefato.</p>
 <pre><code># Título projeto
 
 Resumo descrevendo o objetivo do artefato, com o respectivo título e resumo do artigo.
@@ -254,7 +236,7 @@ Caso o processo para a reprodução de todos os experimento não seja possível 
 Apresente a licença.
 
 </code></pre>
-<p>É obrigatório que <strong>TODAS</strong> as Seções apresentadas no requisito mínimo README.md estejam presentes. 
+<p>É obrigatório que <strong>TODAS</strong> as Seções apresentadas no requisito mínimo README.md estejam presentes.
 Se você tiver qualquer dúvida, por favor, entre em contato conosco.</p>
 <blockquote>
 <p><strong>Note</strong>
@@ -262,17 +244,17 @@ Antes de submeter o seu artefato, é interessante que os autores realizem a inst
 </blockquote>
 <h3 id="recursos-específicos-ou-restrições"><a class="header" href="#recursos-específicos-ou-restrições">Recursos específicos ou restrições</a></h3>
 <p>Caso <strong>recursos adicionais</strong> sejam necessários (infraestrutura de nuvem, chaves SSH, etc.) para a avaliação do artefato, estas informações devem ser submetidas através de um apêndice.
-Neste os autores incluem informações adicionais (privadas, como chaves SSH para acessar o Google Cloud) para auxiliar os revisores do Comitê Técnico de Artefatos. 
+Neste os autores incluem informações adicionais (privadas, como chaves SSH para acessar o Google Cloud) para auxiliar os revisores do Comitê Técnico de Artefatos.
 O modelo LaTeX de apêndice está disponível em <a href="https://www.overleaf.com/read/jscjwsnqsxfh">Exemplo-Apendice</a>.
 Todos os campos devem ser apresentados no apêndice, além dos requisitos mínimos para o README.md que são obrigatórios.</p>
 <p>O apêndice é um critério <strong>adicional</strong> no momento que recursos específicos acabam sendo necessários para a avaliação do artefato ou restrições de acesso existam.</p>
 <h2 id="requisitos-por-selo"><a class="header" href="#requisitos-por-selo">Requisitos por selo</a></h2>
 <p>Para que o trabalho/artefato seja apto a receber o selo, os respectivos requisitos devem ser alcançados:</p>
 <h3 id="artefatos-disponíveis-selod"><a class="header" href="#artefatos-disponíveis-selod">Artefatos Disponíveis (SeloD)</a></h3>
-<p>É esperado que o código e/ou dados estejam <strong>disponíveis em um repositório estável</strong> (como GitHub e GitLab). 
+<p>É esperado que o código e/ou dados estejam <strong>disponíveis em um repositório estável</strong> (como GitHub e GitLab).
 Neste repositório é esperado encontrar um <a href="https://github.com/matiassingers/awesome-readme">README.md</a> com os <strong>requisitos mínimos</strong>. O arquivo README.md do repositório pode ser o mesmo arquivo submetido para apreciação do CTA.</p>
 <h3 id="artefatos-funcionais-selof"><a class="header" href="#artefatos-funcionais-selof">Artefatos Funcionais (SeloF)</a></h3>
-<p>É esperado que o código e/ou artefato possa ser <strong>executado</strong> e o revisor consiga observar algumas de suas <strong>funcionalidades</strong>. 
+<p>É esperado que o código e/ou artefato possa ser <strong>executado</strong> e o revisor consiga observar algumas de suas <strong>funcionalidades</strong>.
 Para adquirir este artefato, é importante que informações adicionais estejam presentes no README.md do repositório, como</p>
 <ol>
 <li>lista de dependências;</li>
@@ -296,7 +278,7 @@ Para adquirir este artefato, é importante que informações adicionais estejam 
 Para atender esses requisitos sugere-se a inclusão de script(s) que automatizem ao máximo todo o processo de reprodução.</li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="intruções-para-revisão"><a class="header" href="#intruções-para-revisão">Intruções para revisão</a></h1>
-<p>Seu objetivo como um revisor de artefato consiste em garantir que a qualidade do artefato corresponda com o conteúdo do artigo e os requisitos mínimos esperados para a obtenção de cada selo. 
+<p>Seu objetivo como um revisor de artefato consiste em garantir que a qualidade do artefato corresponda com o conteúdo do artigo e os requisitos mínimos esperados para a obtenção de cada selo.
 Para realizar esta atividade com excelência, antes de avaliar os artefatos <strong>(i)</strong> leia o artigo; e <strong>(ii)</strong> defina as principais contribuições do trabalho. Estas duas etapas tornam o processo de avaliação de cada selo mais simples.</p>
 <blockquote>
 <p><strong>Note</strong>
@@ -394,7 +376,26 @@ Apresente a licença.
 <h2 id="entrega-das-revisões"><a class="header" href="#entrega-das-revisões">Entrega das Revisões</a></h2>
 <p>Para cada artefato, você deve produzir uma breve revisão justificando a razão por atribuir ou negar um selo ao artefato. Esta avaliação só deve ser completada após o processo de avaliação tenha sido realizado.</p>
 <p>Para facilitar o processo de avaliação, um exemplos está disponível junto ao formulário de submissão.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="organizadores"><a class="header" href="#organizadores">Organizadores</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="resultados"><a class="header" href="#resultados">Resultados</a></h1>
+<div class="table-wrapper"><table><thead><tr><th><div style="width:290px">Artigo</div></th><th>Disp.</th><th>Func.</th><th>Sus.</th><th>Repr.</th><th>Link</th></tr></thead><tbody>
+<tr><td>VulnSyncAI: PLN e LLMs para Construção e Atualização Contínua de Datasets de Vulnerabilidades</td><td><img src="/img/SBRC25_SF_SeloD.png"></td><td><img src="/img/SBRC25_SF_SeloF.png"></td><td><img src="/img/SBRC25_SF_SeloS.png"></td><td><img src="/img/SBRC25_SF_SeloR.png"></td><td><a href="https://github.com/datasets-community/VulnSyncAI" target="_blank">Artefato</a><br></td></tr>
+<tr><td>Cloud AutoDroid: Um Sistema Distribuído Escalável para Execução de Ferramentas de IA Generativa</td><td><img src="/img/SBRC25_SF_SeloD.png"></td><td><img src="/img/SBRC25_SF_SeloF.png"></td><td><img src="/img/SBRC25_SF_SeloS.png"></td><td><img src="/img/SBRC25_SF_SeloR.png"></td><td><a href="https://github.com/MalwareDataLab/autodroid-sbrc25" target="_blank">Artefato</a><br></td></tr>
+<tr><td>Dashboard HackInSDN: plataforma web para experimentação em redes e cibersegurança através de clusters Kubernetes</td><td><img src="/img/SBRC25_SF_SeloD.png"></td><td><img src="/img/SBRC25_SF_SeloF.png"></td><td><img src="/img/SBRC25_SF_SeloS.png"></td><td>-</td><td><a href="https://github.com/hackinsdn/dashboard" target="_blank">Artefato</a><br></td></tr>
+<tr><td>NFV-Prime: Uma Ferramenta para Prototipação e Visualização de Funções Virtualizadas de Rede</td><td><img src="/img/SBRC25_SF_SeloD.png"></td><td><img src="/img/SBRC25_SF_SeloF.png"></td><td>-</td><td>-</td><td><a href="https://github.com/fequiles/NFV-Prime" target="_blank">Artefato</a><br></td></tr>
+<tr><td>ns3-oran-customizable-db: Uma Ferramenta para Construção de Base de Dados Personalizável para Simulações Open RAN</td><td><img src="/img/SBRC25_SF_SeloD.png"></td><td><img src="/img/SBRC25_SF_SeloF.png"></td><td><img src="/img/SBRC25_SF_SeloS.png"></td><td>-</td><td><a href="https://github.com/felip-t/ns3-oran" target="_blank">Artefato</a><br></td></tr>
+<tr><td>A New WAVE: Exploring New Load Pattern Models for Experimentation in Computer Networks</td><td><img src="/img/SBRC25_SF_SeloD.png"></td><td>-</td><td>-</td><td>-</td><td><a href="https://github.com/ifpb/new_wave" target="_blank">Artefato</a><br></td></tr>
+<tr><td>UNetyEmu: Unity-based simulator for aerial and non-aerial vehicles with integrated network emulation</td><td><img src="/img/SBRC25_SF_SeloD.png"></td><td><img src="/img/SBRC25_SF_SeloF.png"></td><td><img src="/img/SBRC25_SF_SeloS.png"></td><td><img src="/img/SBRC25_SF_SeloR.png"></td><td><a href="https://github.com/intrig-unicamp/UNetyEmu" target="_blank">Artefato</a><br></td></tr>
+<tr><td>Mininet-GUI: Uma Abordagem Visual e Interativa para Experimentação em Redes SDN</td><td><img src="/img/SBRC25_SF_SeloD.png"></td><td><img src="/img/SBRC25_SF_SeloF.png"></td><td><img src="/img/SBRC25_SF_SeloS.png"></td><td><img src="/img/SBRC25_SF_SeloR.png"></td><td><a href="https://github.com/latarc/mininet-gui" target="_blank">Artefato</a><br></td></tr>
+<tr><td>Hórus-CDS: O Olho Digital na Segurança das Smart Grids</td><td><img src="/img/SBRC25_SF_SeloD.png"></td><td><img src="/img/SBRC25_SF_SeloF.png"></td><td>-</td><td>-</td><td><a href="https://github.com/wesleiferreira98/Horus-CDS.git" target="_blank">Artefato</a><br></td></tr>
+<tr><td>AGATA – Arquitetura para Gerenciamento Automático de Tarefas de Aprendizado Federado</td><td><img src="/img/SBRC25_SF_SeloD.png"></td><td><img src="/img/SBRC25_SF_SeloF.png"></td><td><img src="/img/SBRC25_SF_SeloS.png"></td><td>-</td><td><a href="https://github.com/GTA-UFRJ/FLMNGR.git" target="_blank">Artefato</a><br></td></tr>
+<tr><td>Net2d: Gerência de Dispositivos e Serviços de rede baseado em uma Fonte Única de Verdade (SSoT) da Rede</td><td><img src="/img/SBRC25_SF_SeloD.png"></td><td><img src="/img/SBRC25_SF_SeloF.png"></td><td>-</td><td><img src="/img/SBRC25_SF_SeloR.png"></td><td><a href="https://github.com/net2d-community/net2d" target="_blank">Artefato</a><br></td></tr>
+<tr><td>Inteligência de Ameaças Cibernéticas para Melhoria na Detecção e Resposta a Incidentes</td><td><img src="/img/SBRC25_SF_SeloD.png"></td><td>-</td><td>-</td><td>-</td><td><a href="https://zenodo.org/records/14885398" target="_blank">Artefato</a><br></td></tr>
+<tr><td>Mininet-WPAN: Enabling WPAN and IoT Emulations with 802.15.4 Support</td><td><img src="/img/SBRC25_SF_SeloD.png"></td><td><img src="/img/SBRC25_SF_SeloF.png"></td><td>-</td><td><img src="/img/SBRC25_SF_SeloR.png"></td><td><a href="https://github.com/ramonfontes/mn-wpan" target="_blank">Artefato</a><br></td></tr>
+<tr><td>THexCAD: Uma Plataforma de Prototipagem e Simulação de Cobertura para Área com Múltiplos Drones</td><td><img src="/img/SBRC25_SF_SeloD.png"></td><td><img src="/img/SBRC25_SF_SeloF.png"></td><td><img src="/img/SBRC25_SF_SeloS.png"></td><td><img src="/img/SBRC25_SF_SeloR.png"></td><td><a href="https://gitlab.com/maxwellfdasilva/THEXCAD_APP" target="_blank">Artefato</a><br></td></tr>
+<tr><td>Lab Cyber Academy: Um Cyber Range para Treinamento em Segurança da Informação Utilizando AWS e IaC</td><td><img src="/img/SBRC25_SF_SeloD.png"></td><td><img src="/img/SBRC25_SF_SeloF.png"></td><td>-</td><td>-</td><td><a href="https://github.com/vitorreiel/lab-cyber-academy.git" target="_blank">Artefato</a><br></td></tr>
+<tr><td>Sensor de Software Robusto para Identificar Pessoas em uma Cena de Vídeo</td><td><img src="/img/SBRC25_SF_SeloD.png"></td><td><img src="/img/SBRC25_SF_SeloF.png"></td><td>-</td><td>-</td><td><a href="https://gitlab.com/LCC/deploy-detector-pessoas" target="_blank">Artefato</a><br></td></tr>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="organizadores"><a class="header" href="#organizadores">Organizadores</a></h1>
 <h2 id="coordenadores-do-cta"><a class="header" href="#coordenadores-do-cta">Coordenadores do CTA</a></h2>
 <p>Rodrigo Brandão Mansilha (UNIPAMPA)<br />
 Tiago Heinrich (UFPR/MPI)</p>
