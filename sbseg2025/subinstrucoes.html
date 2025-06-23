@@ -166,6 +166,7 @@ Vale lembrar que o processo de revisão do CTA é independente da revisão do ar
 <li><a href="#requisitos-m%C3%ADnimo-readmemd-obrigat%C3%B3rio">Os requisitos mínimos do README</a> estejam presentes no repositório;</li>
 <li>Informações sobre <a href="#recursos-espec%C3%ADficos-ou-restri%C3%A7%C3%B5es">recursos específicos</a> estejam presentes no apêndice.</li>
 <li>O artefato atenda os <a href="#requisitos-por-selo">critérios dos selos solicitados</a>;</li>
+<li>Os autores respondam as perguntas postadas pelos revisores na plataforma, como enviem a carta de rebuttal dentro do prazo.</li>
 </ol>
 <p>Todo o processo de revisão do artefato será realizado pela plataforma <a href="https://hotcrp.c3sl.ufpr.br/">hotcrp</a>.
 Os autores com artefatos registrados para o processo de revisão serão notificados sobre o acesso à plataforma e devem observar por emails enviados pela plataforma com dúvidas do comitê de revisão.
@@ -186,12 +187,12 @@ Os autores devem descrever quais selos devem ser considerados no processo de ava
 
 # Informações básicas
 
-Esta seção deve apresentar informações básicas de todos os componentes necessários para a execução e replicação dos experimentos. 
+Esta seção deve apresentar informações básicas de todos os componentes necessários para a execução e replicação dos experimentos.
 Descrevendo todo o ambiente de execução, com requisitos de hardware e software.
 
 # Dependências
 
-Informações relacionadas a benchmarks utilizados e dependências para a execução devem ser descritas nesta seção. 
+Informações relacionadas a benchmarks utilizados e dependências para a execução devem ser descritas nesta seção.
 Busque deixar o mais claro possível, apresentando informações como versões de dependências e processos para acessar recursos de terceiros caso necessário.
 
 # Preocupações com segurança
@@ -205,15 +206,15 @@ O processo de baixar e instalar a aplicação deve ser descrito nesta seção. A
 # Teste mínimo
 
 Esta seção deve apresentar um passo a passo para a execução de um teste mínimo.
-Um teste mínimo de execução permite que os revisores consigam observar algumas funcionalidades do artefato. 
+Um teste mínimo de execução permite que os revisores consigam observar algumas funcionalidades do artefato.
 Este teste é útil para a identificação de problemas durante o processo de instalação.
 
 # Experimentos
 
-Esta seção deve descrever um passo a passo para a execução e obtenção dos resultados do artigo. Permitindo que os revisores consigam alcançar as reivindicações apresentadas no artigo. 
-Cada reivindicações deve ser apresentada em uma subseção, com detalhes de arquivos de configurações a serem alterados, comandos a serem executados, flags a serem utilizadas, tempo esperado de execução, expectativa de recursos a serem utilizados como 1GB RAM/Disk e resultado esperado. 
+Esta seção deve descrever um passo a passo para a execução e obtenção dos resultados do artigo. Permitindo que os revisores consigam alcançar as reivindicações apresentadas no artigo.
+Cada reivindicações deve ser apresentada em uma subseção, com detalhes de arquivos de configurações a serem alterados, comandos a serem executados, flags a serem utilizadas, tempo esperado de execução, expectativa de recursos a serem utilizados como 1GB RAM/Disk e resultado esperado.
 
-Caso o processo para a reprodução de todos os experimento não seja possível em tempo viável. Os autores devem escolher as principais reivindicações apresentadas no artigo e apresentar o respectivo processo para reprodução.
+Caso o processo para a reprodução de todos os experimentos não seja possível em tempo viável. Os autores devem escolher as principais reivindicações apresentadas no artigo e apresentar o respectivo processo para reprodução.
 
 ## Reivindicações #X
 
@@ -236,7 +237,7 @@ Neste os autores incluem informações adicionais (privadas, como chaves SSH par
 O modelo LaTeX de apêndice está disponível em <a href="https://www.overleaf.com/read/jscjwsnqsxfh">Exemplo-Apendice</a>.
 Todos os campos devem ser apresentados no apêndice, além dos requisitos mínimos para o README.md que são obrigatórios.</p>
 <p>O apêndice é um critério <strong>adicional</strong> no momento que recursos específicos acabam sendo necessários para a avaliação do artefato ou restrições de acesso existam.</p>
-<h3 id="exemplos-de-apendices"><a class="header" href="#exemplos-de-apendices">Exemplos de Apendices</a></h3>
+<h3 id="exemplos-de-apêndices"><a class="header" href="#exemplos-de-apêndices">Exemplos de Apêndices</a></h3>
 <div class="table-wrapper"><table><thead><tr><th>Evento</th><th>Apêndice</th><th>Artefato</th><th>Artigo</th></tr></thead><tbody>
 <tr><td>SBRC'25</td><td><a href="./data/hotcrp-paper1-apendice.pdf">Apêndice link</a></td><td><a href="https://github.com/datasets-community/VulnSyncAI">Artefato link</a></td><td><a href="./data/7880.pdf">Artigo link</a></td></tr>
 <tr><td>SBSeg'23</td><td><a href="./data/235027-5.pdf">Apêndice link</a></td><td><a href="https://github.com/AleMarquis/ArtigoWTICGSBSeg23">Artefato link</a></td><td><a href="./data/235027-2-selos-de-artefatos.pdf">Artigo link</a></td></tr>
@@ -268,12 +269,22 @@ Para adquirir este artefato, é importante que informações adicionais estejam 
 <li>permita que os avaliadores consigam identificar as principais reivindicações do artigo no artefato.</li>
 </ol>
 <h3 id="experimentos-reprodutíveis-selor"><a class="header" href="#experimentos-reprodutíveis-selor">Experimentos Reprodutíveis (SeloR)</a></h3>
-<p>É esperado que o <strong>revisor consiga reproduzir as principais reivindicações apresentadas no artigo</strong>. Para obter este selo é esperado:</p>
+<p>É esperado que o <strong>revisor consiga reproduzir as principais reivindicações apresentadas no artigo</strong>. Sugere-se a utilização de máquinas virtuais, containers ou scripts que facilitem e reduzam o tempo de criação do ambiente. Para obter este selo é esperado:</p>
 <ol>
 <li>instrução para executar as principais reivindicações (e.g., resultados dos principais gráficos/tabelas);</li>
 <li>descrição de um processo de como foram executados os experimentos para chegar até o resultado do artigo.
 Para atender esses requisitos sugere-se a inclusão de script(s) que automatizem ao máximo todo o processo de reprodução;</li>
 </ol>
+<h2 id="processo-de-revisão"><a class="header" href="#processo-de-revisão">Processo de revisão</a></h2>
+<p>O processo de revisão de artefatos está dividido em duas etapas de revisão, como autor você deve ficar atento às perguntas levantadas pelos revisores na plataforma. Após o término da primeira etapa de revisão (sbseg25-r1), os autores devem submeter uma carta de rebuttal que visa esclarecer problemas encontrados pelos revisores e auxiliar no processo de revisão. Por fim, os revisores vão considerar as revisões da primeira fase e a carta de rebuttal para tomar uma decisão na segunda fase de avaliação (sbseg25-r2-decision).</p>
+<p>Calendário de revisão para o ciclo de revisão do SBSeg'25:</p>
+<ul>
+<li>Prazo para Submissão de Artefatos</li>
+<li>Rodada 1 de Revisão (sbseg25-r1)</li>
+<li>Fase de Rebuttal</li>
+<li>Decisão do Revisor (sbseg25-r2-decision)</li>
+</ul>
+<p>*As datas estão disponíveis no <a href="https://hotcrp.c3sl.ufpr.br/">hotcrp</a>.</p>
 
                     </main>
 
