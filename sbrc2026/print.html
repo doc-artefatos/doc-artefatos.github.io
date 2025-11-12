@@ -42,6 +42,17 @@
         <script src="toc.js"></script>
     </head>
     <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -119,7 +130,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -156,7 +167,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="avaliação-de-artefato-do-sbrc26"><a class="header" href="#avaliação-de-artefato-do-sbrc26">Avaliação de Artefato do SBRC 2026</a></h1>
+                        <h1 id="avaliação-de-artefato-do-sbrc-2026"><a class="header" href="#avaliação-de-artefato-do-sbrc-2026">Avaliação de Artefato do SBRC 2026</a></h1>
 <p>Em 2026, o SBRC 2026 contará com um Comitê Técnico de Artefatos (CTA) para avaliar os artefatos dos artigos aceitos. Tais artefatos incluem software, dados, documentação complementar, resultados brutos, provas de conceito, modelos, avaliações detalhadas, benchmarks, etc. O artefato é um recurso essencial para os trabalhos de pesquisa e a qualidade dele é tão importante quanto a do próprio artigo científico.</p>
 <p>O artefato será avaliado por um comitê específico, que poderá atribuir até quatro selos:</p>
 <ul>
@@ -181,7 +192,7 @@ Caso você tenha alguma dúvida ou preocupação, você pode entrar em <a href="
 <div style="break-before: page; page-break-before: always;"></div><h1 id="instruções-de-submissão"><a class="header" href="#instruções-de-submissão">Instruções de submissão</a></h1>
 <p>Quatro selos de qualidade podem ser considerados para um artefato.
 Junto com a submissão do camera ready do artigo, os autores <strong>devem obrigatoriamente</strong> submeter o artefato do artigo.
-Para que os artefatos sejam julgados, é <strong>obrigatório que o README.md submetido contenha os requisitos mínimos exigidos</strong>.</p>
+Para que os artefatos sejam julgados, é <strong>obrigatório que o README.md submetido contenha os requisitos mínimos exigidos</strong>. Veja <a href="https://doc-artefatos.github.io/sbrc2026/exemplos-4selos.html">exemplos de README.md de Artefatos com 4 Selos</a> do Salão de Ferramentas do SBRC 2025.</p>
 <h2 id="requisitos-mínimo-readmemd-obrigatório"><a class="header" href="#requisitos-mínimo-readmemd-obrigatório">Requisitos mínimo README.md (Obrigatório)</a></h2>
 <p>Para facilitar o processo de avaliação dos artefatos, foi criado um modelo de README.md (Obrigatório) com todos os campos mínimos esperados para um artefato.</p>
 <pre><code># Título projeto
@@ -376,6 +387,16 @@ Apresente a licença.
 <h2 id="entrega-das-revisões"><a class="header" href="#entrega-das-revisões">Entrega das Revisões</a></h2>
 <p>Para cada artefato, você deve produzir uma breve revisão justificando a razão por atribuir ou negar um selo ao artefato. Esta avaliação só deve ser completada após o processo de avaliação tenha sido realizado.</p>
 <p>Para facilitar o processo de avaliação, um exemplos está disponível junto ao formulário de submissão.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="exemplos-de-artefatos-com-4-selos-do-sfsbrc-2025"><a class="header" href="#exemplos-de-artefatos-com-4-selos-do-sfsbrc-2025">Exemplos de Artefatos com 4 Selos do SF/SBRC 2025</a></h1>
+<p>A seguir, apresentam-se alguns dos principais artefatos contemplados com os quatro selos no Salão de Ferramentas do SBRC 2025. Os respectivos arquivos README.md servem como exemplos de boas práticas de documentação e organização.</p>
+<ul>
+<li><a href="https://github.com/MalwareDataLab/autodroid-sbrc25">Cloud AutoDroid: Um Sistema Distribuído Escalável para Execução de Ferramentas de IA Generativa</a></li>
+<li><a href="https://github.com/hackinsdn/dashboard">HackInSDN Dashboard</a></li>
+<li><a href="https://github.com/latarc/mininet-gui">Mininet-GUI: Uma Abordagem Visual e Interativa para Experimentação em Redes SDN</a></li>
+<li><a href="https://gitlab.com/maxwellfdasilva/THEXCAD_APP">THEXCAD - Sistema de Tesselação Hexagonal para cobertura de área com drones</a></li>
+<li><a href="https://github.com/intrig-unicamp/UNetyEmu">UNetyEmu: Unity-based simulator for aerial and non-aerial vehicles with integrated network emulation</a></li>
+<li><a href="https://github.com/datasets-community/VulnSyncAI">VulnSyncAI: PLN e LLMs para Construção e Atualização Contínua de Datasets de Vulnerabilidades</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="resultados"><a class="header" href="#resultados">Resultados</a></h1>
 <p>TBD</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="organizadores"><a class="header" href="#organizadores">Organizadores</a></h1>
