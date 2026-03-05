@@ -1,7 +1,7 @@
 # Summary
   - [Avaliação de Artefato](./introducao.md)
 
-# Trilha Principal 
+# Trilha Principal/SF'26 
 ---
   - [Chamada para Artefatos](./chamadas.md)
   - [Instruções de submissão](./subinstrucoes.md)
