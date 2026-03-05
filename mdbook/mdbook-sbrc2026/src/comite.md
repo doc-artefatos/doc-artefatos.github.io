@@ -2,8 +2,10 @@
 
 ##  Coordenadores do CTA 
 
-Diego Kreutz (UNIPAMPA)   
 Tiago Heinrich (UFPR/MPI)   
+Diego Kreutz (UNIPAMPA)     
+Leandro Bertholdo (UFRGS)       
+Antonio João Azambuja (UFRGS)       
 
 ## Comitê Técnico de Artefatos (CTA)
 
