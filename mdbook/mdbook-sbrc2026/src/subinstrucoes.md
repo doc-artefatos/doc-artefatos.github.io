@@ -1,7 +1,7 @@
 # Instruções de submissão
 
 Quatro selos de qualidade podem ser considerados para um artefato. 
-Junto com a submissão do camera ready do artigo, os autores **devem obrigatoriamente** submeter o artefato do artigo.
+Junto com a submissão do camera ready do artigo, os autores **podem** submeter o artefato do artigo.
 Para que os artefatos sejam julgados, é **obrigatório que o README.md submetido contenha os requisitos mínimos exigidos**. Veja [exemplos de README.md de Artefatos com 4 Selos](https://doc-artefatos.github.io/sbrc2026/exemplos-4selos.html) do Salão de Ferramentas do SBRC 2025. 
 
 ## Requisitos mínimo README.md (Obrigatório)
