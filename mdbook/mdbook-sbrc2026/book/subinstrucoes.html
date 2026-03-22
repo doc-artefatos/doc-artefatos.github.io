@@ -157,10 +157,22 @@
                     <main>
                         <h1 id="instruções-de-submissão"><a class="header" href="#instruções-de-submissão">Instruções de submissão</a></h1>
 <p>Quatro selos de qualidade podem ser considerados para um artefato.
-Junto com a submissão do camera ready do artigo, os autores <strong>podem</strong> submeter o artefato do artigo.
-Para que os artefatos sejam julgados, é <strong>obrigatório que o README.md submetido contenha os requisitos mínimos exigidos</strong>. Veja <a href="https://doc-artefatos.github.io/sbrc2026/exemplos-4selos.html">exemplos de README.md de Artefatos com 4 Selos</a> do Salão de Ferramentas do SBRC 2025.</p>
+Após a notificação de aceite do artigo, os autores podem opcionalmente submeter o(s) artefato(s) relacionado(s) (os autores do Salão de Ferramentas são obrigados a fazer a submissão do artefato).</p>
+<p>Os autores devem fazer o registro do artefato na plataforma <a href="https://hotcrp.c3sl.ufpr.br/">hotcrp</a>.
+Este registro requer algumas informações como contato dos autores, um link para o artefato e opcionalmente um apêndice.
+Vale lembrar que o processo de revisão do CTA é independente da revisão do artigo no JEMS e as submissões são single-blind.</p>
+<p>Importante ressaltar que para um artefato o comitê de revisão espera que:</p>
+<ol>
+<li><a href="#requisitos-m%C3%ADnimo-readmemd-obrigat%C3%B3rio">Os requisitos mínimos do README</a> estejam presentes no repositório;</li>
+<li>Informações sobre <a href="#recursos-espec%C3%ADficos-ou-restri%C3%A7%C3%B5es">recursos específicos</a> estejam presentes no apêndice.</li>
+<li>O artefato atenda os <a href="#requisitos-por-selo">critérios dos selos solicitados</a>;</li>
+<li>Os autores respondam as perguntas postadas pelos revisores na plataforma, como enviem a carta de rebuttal dentro do prazo.</li>
+</ol>
+<p>Todo o processo de revisão do artefato será realizado pela plataforma <a href="https://hotcrp.c3sl.ufpr.br/">hotcrp</a>.
+Os autores com artefatos registrados para o processo de revisão serão notificados sobre o acesso à plataforma e devem observar por emails enviados pela plataforma com dúvidas do comitê de revisão.
+Todo o processo de comunicação dos revisores de artefatos com os autores é realizado pelo hotcrp.</p>
 <h2 id="requisitos-mínimo-readmemd-obrigatório"><a class="header" href="#requisitos-mínimo-readmemd-obrigatório">Requisitos mínimo README.md (Obrigatório)</a></h2>
-<p>Para facilitar o processo de avaliação dos artefatos, foi criado um modelo de README.md (Obrigatório) com todos os campos mínimos esperados para um artefato.</p>
+<p>Para facilitar o processo de avaliação dos artefatos, foi criado um modelo de README.md (Obrigatório) com todos os campos mínimos esperados para um artefato. Veja <a href="./exemplos-4selos.html">exemplos de README.md de Artefatos com 4 Selos</a>.</p>
 <pre><code># Título projeto
 
 Resumo descrevendo o objetivo do artefato, com o respectivo título e resumo do artigo.
@@ -175,12 +187,12 @@ Os autores devem descrever quais selos devem ser considerados no processo de ava
 
 # Informações básicas
 
-Esta seção deve apresentar informações básicas de todos os componentes necessários para a execução e replicação dos experimentos. 
+Esta seção deve apresentar informações básicas de todos os componentes necessários para a execução e replicação dos experimentos.
 Descrevendo todo o ambiente de execução, com requisitos de hardware e software.
 
 # Dependências
 
-Informações relacionadas a benchmarks utilizados e dependências para a execução devem ser descritas nesta seção. 
+Informações relacionadas a benchmarks utilizados e dependências para a execução devem ser descritas nesta seção.
 Busque deixar o mais claro possível, apresentando informações como versões de dependências e processos para acessar recursos de terceiros caso necessário.
 
 # Preocupações com segurança
@@ -194,15 +206,15 @@ O processo de baixar e instalar a aplicação deve ser descrito nesta seção. A
 # Teste mínimo
 
 Esta seção deve apresentar um passo a passo para a execução de um teste mínimo.
-Um teste mínimo de execução permite que os revisores consigam observar algumas funcionalidades do artefato. 
+Um teste mínimo de execução permite que os revisores consigam observar algumas funcionalidades do artefato.
 Este teste é útil para a identificação de problemas durante o processo de instalação.
 
 # Experimentos
 
-Esta seção deve descrever um passo a passo para a execução e obtenção dos resultados do artigo. Permitindo que os revisores consigam alcançar as reivindicações apresentadas no artigo. 
-Cada reivindicações deve ser apresentada em uma subseção, com detalhes de arquivos de configurações a serem alterados, comandos a serem executados, flags a serem utilizadas, tempo esperado de execução, expectativa de recursos a serem utilizados como 1GB RAM/Disk e resultado esperado. 
+Esta seção deve descrever um passo a passo para a execução e obtenção dos resultados do artigo. Permitindo que os revisores consigam alcançar as reivindicações apresentadas no artigo.
+Cada reivindicações deve ser apresentada em uma subseção, com detalhes de arquivos de configurações a serem alterados, comandos a serem executados, flags a serem utilizadas, tempo esperado de execução, expectativa de recursos a serem utilizados como 1GB RAM/Disk e resultado esperado.
 
-Caso o processo para a reprodução de todos os experimento não seja possível em tempo viável. Os autores devem escolher as principais reivindicações apresentadas no artigo e apresentar o respectivo processo para reprodução.
+Caso o processo para a reprodução de todos os experimentos não seja possível em tempo viável. Os autores devem escolher as principais reivindicações apresentadas no artigo e apresentar o respectivo processo para reprodução.
 
 ## Reivindicações #X
 
@@ -248,12 +260,22 @@ Para adquirir este artefato, é importante que informações adicionais estejam 
 <li>permita que os avaliadores consigam identificar as principais reivindicações do artigo no artefato.</li>
 </ol>
 <h3 id="experimentos-reprodutíveis-selor"><a class="header" href="#experimentos-reprodutíveis-selor">Experimentos Reprodutíveis (SeloR)</a></h3>
-<p>É esperado que o <strong>revisor consiga reproduzir as principais reivindicações apresentadas no artigo</strong>. Para obter este selo é esperado:</p>
+<p>É esperado que o <strong>revisor consiga reproduzir as principais reivindicações apresentadas no artigo</strong>. Sugere-se a utilização de máquinas virtuais, containers ou scripts que facilitem e reduzam o tempo de criação do ambiente. Para obter este selo é esperado:</p>
 <ol>
 <li>instrução para executar as principais reivindicações (e.g., resultados dos principais gráficos/tabelas);</li>
 <li>descrição de um processo de como foram executados os experimentos para chegar até o resultado do artigo.
-Para atender esses requisitos sugere-se a inclusão de script(s) que automatizem ao máximo todo o processo de reprodução.</li>
+Para atender esses requisitos sugere-se a inclusão de script(s) que automatizem ao máximo todo o processo de reprodução;</li>
 </ol>
+<h2 id="processo-de-revisão"><a class="header" href="#processo-de-revisão">Processo de revisão</a></h2>
+<p>O processo de revisão de artefatos está dividido em duas etapas de revisão, como autor você deve ficar atento às perguntas levantadas pelos revisores na plataforma. Após o término da primeira etapa de revisão (r1), os autores devem submeter uma carta de rebuttal que visa esclarecer problemas encontrados pelos revisores e auxiliar no processo de revisão. Por fim, os revisores vão considerar as revisões da primeira fase e a carta de rebuttal para tomar uma decisão na segunda fase de avaliação (r2-decision).</p>
+<p>Calendário de revisão para o ciclo de revisão:</p>
+<ul>
+<li>Prazo para Submissão de Artefatos</li>
+<li>Rodada 1 de Revisão (r1)</li>
+<li>Fase de Rebuttal</li>
+<li>Decisão do Revisor (r2-decision)</li>
+</ul>
+<p>*As datas estão disponíveis no <a href="https://hotcrp.c3sl.ufpr.br/">hotcrp</a>.</p>
 
                     </main>
 
