@@ -2,8 +2,9 @@
 
 ##  Coordenadores do CTA 
 
-Tiago Heinrich (UFPR/MPI)   
-Diego Kreutz (UNIPAMPA)     
+Tiago Heinrich (UFPR/MPI)     
+Roben Castagna Lunardi (IFRS)     
+Lourenco Alves Pereira Jr (ITA)     
 
 ## Comitê Técnico de Artefatos (CTA)
 
