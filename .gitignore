@@ -1,0 +1,5 @@
+# Dados do HotCRP (não devem ser versionados)
+hotcrp-data.json
+
+# Arquivos de sistema do macOS
+.DS_Store
